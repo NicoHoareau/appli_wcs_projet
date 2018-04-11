@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "383637190836",
+    "firebase_url": "https://appwcs-652ec.firebaseio.com",
+    "project_id": "appwcs-652ec",
+    "storage_bucket": "appwcs-652ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383637190836:android:b102e5ab9c9009fe",
+        "android_client_info": {
+          "package_name": "fr.nicolashoareau_toulousewcs.appliwcsprojet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383637190836-96838ru1gtvp2jg62q8a6s6hl3ubvq4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXRW2iJ3vKWZbwEZEi4afKzIYrfs8OpoI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
