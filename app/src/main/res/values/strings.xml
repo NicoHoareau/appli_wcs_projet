@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Appli WCS Projet</string>
+    <string name="text_forget_mdp">Mot de passe oublié ?</string>
+    <string name="text_pseudo_login">Pseudo</string>
+    <string name="password">Mot de passe</string>
+    <string name="connexion">Connexion</string>
+    <string name="inscription">Inscription</string>
 </resources>
