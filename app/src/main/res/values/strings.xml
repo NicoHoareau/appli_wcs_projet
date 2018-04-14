@@ -5,4 +5,10 @@
     <string name="password">Mot de passe</string>
     <string name="connexion">Connexion</string>
     <string name="inscription">Inscription</string>
+    <string name="email">Email</string>
+    <string name="deja_inscrit">Déjà inscrit ?</string>
+    <string name="entrer_email">Veuillez entrer une adresse mail</string>
+    <string name="entrer_password">Veuillez entrer un mot de passe</string>
+    <string name="password_trop_court">Le mot de passe doit contenir 6 caractère</string>
+    <string name="echec_inscription">Echec inscription</string>
 </resources>
