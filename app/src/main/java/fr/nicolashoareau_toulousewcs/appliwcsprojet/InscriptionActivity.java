@@ -31,6 +31,15 @@ public class InscriptionActivity extends AppCompatActivity {
         Button btnDejaInscrit = findViewById(R.id.btn_deje_inscrit);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
 
+        btnDejaInscrit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InscriptionActivity.this, ConnexionActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         btnInscription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
