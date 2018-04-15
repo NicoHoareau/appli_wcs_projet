@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InscriptionActivity"></activity>
+        <activity android:name=".InscriptionActivity"/>
+        <activity android:name=".OubliePassword"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
