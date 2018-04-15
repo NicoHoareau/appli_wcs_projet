@@ -11,4 +11,10 @@
     <string name="entrer_password">Veuillez entrer un mot de passe</string>
     <string name="password_trop_court">Le mot de passe doit contenir 6 caractère</string>
     <string name="echec_inscription">Echec inscription</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_tab1">Requêtes en cours</string>
+    <string name="name_tab2">Requêtes validées</string>
+    <string name="name_tab3">Fil d\'actualité</string>
 </resources>
