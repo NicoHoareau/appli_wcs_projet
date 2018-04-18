@@ -17,4 +17,8 @@
     <string name="name_tab1">Requêtes en cours</string>
     <string name="name_tab2">Requêtes validées</string>
     <string name="name_tab3">Fil d\'actualité</string>
+    <string name="request_one">Requête 1</string>
+    <string name="indication_name_request">Requête</string>
+    <string name="indication_description">Description :</string>
+    <string name="validate">Valider</string>
 </resources>

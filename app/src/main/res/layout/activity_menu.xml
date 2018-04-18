@@ -13,31 +13,51 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_background"/>
 
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@android:color/white"
+                android:scaleType="fitXY"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/logo_wcs"
+                app:layout_constraintBottom_toTopOf="@+id/img_back"
+                app:layout_constraintEnd_toStartOf="@+id/img_back"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/img_back"
+                app:layout_constraintTop_toBottomOf="@+id/img_back" />
+
+
+        </android.support.constraint.ConstraintLayout>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:alpha="0.7"
-            android:background="#0148ff"
+            android:layout_height="58dp"
+            android:background="#FBA858"
             android:minHeight="?attr/actionBarSize"
-            app:tabTextColor="#FBA858"
-            app:tabSelectedTextColor="#FFF"
-            app:tabIndicatorColor="#FBA858">
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:tabIndicatorColor="@android:color/black"
+            app:tabSelectedTextColor="@android:color/black"
+            app:tabTextColor="@android:color/white">
 
         </android.support.design.widget.TabLayout>
 
         <android.support.v4.view.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
             android:id="@+id/pager"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
 
         </android.support.v4.view.ViewPager>
 
