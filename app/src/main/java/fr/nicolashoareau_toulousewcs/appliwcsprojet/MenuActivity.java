@@ -16,7 +16,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
+/*
         FloatingActionButton addQcm = findViewById(R.id.btn_float_request);
         addQcm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,7 +25,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
                 MenuActivity.this.startActivity(goToCreateRequest);;
             }
         });
-
+*/
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab2));
