@@ -46,6 +46,7 @@ public class OubliePassword extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(OubliePassword.this, R.string.entrer_email, Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 auth.sendPasswordResetEmail(email)
