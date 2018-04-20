@@ -25,5 +25,6 @@
     <string name="indication_name_request">Requête</string>
     <string name="indication_description">Description :</string>
     <string name="validate">Valider</string>
+    <string name="utilisateur_inconnu">Utilisateur inconnu</string>
 
 </resources>
