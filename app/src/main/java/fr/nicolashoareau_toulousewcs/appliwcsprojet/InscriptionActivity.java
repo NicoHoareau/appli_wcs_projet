@@ -27,9 +27,17 @@ public class InscriptionActivity extends AppCompatActivity {
         final EditText inputPassword = findViewById(R.id.et_password);
         final TextView msgError = findViewById(R.id.msg_error);
         Button btnInscription = findViewById(R.id.btn_inscription);
-        Button btnForgotPassword = findViewById(R.id.btn_mdp_oublie);
-        Button btnDejaInscrit = findViewById(R.id.btn_deje_inscrit);
+        Button btnDejaInscrit = findViewById(R.id.btn_deja_inscrit);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
+
+        btnDejaInscrit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InscriptionActivity.this, ConnexionActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnInscription.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +66,7 @@ public class InscriptionActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(InscriptionActivity.this, R.string.echec_inscription, Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Intent intent = new Intent(InscriptionActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(InscriptionActivity.this, MenuActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }

@@ -9,6 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MenuActivity extends AppCompatActivity implements RequestFragment.OnFragmentInteractionListener, ValidationRequestFragment.OnFragmentInteractionListener, ActualityFragment.OnFragmentInteractionListener{
 
@@ -17,6 +20,17 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Button deco = findViewById(R.id.btn_deco);
+        deco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, ConnexionActivity.class);
+                startActivity(intent);
+                FirebaseAuth.getInstance().signOut();
+                finish();
+            }
+        });
+/*
         FloatingActionButton addQcm = findViewById(R.id.btn_float_request);
         addQcm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,7 +39,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
                 MenuActivity.this.startActivity(goToCreateRequest);;
             }
         });
-
+*/
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab2));
