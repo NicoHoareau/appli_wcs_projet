@@ -24,10 +24,10 @@
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="32dp"
             android:layout_marginTop="52dp"
-            android:clickable="true"
             android:src="@android:drawable/ic_input_add"
             android:tint="@android:color/white"
             app:backgroundTint="@android:color/holo_orange_dark"
+            android:onClick="floatBtnClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/list_request" />
