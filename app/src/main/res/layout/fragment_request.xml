@@ -28,7 +28,6 @@
             android:layout_marginBottom="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginTop="32dp"
-            android:onClick="floatBtnClick"
             android:src="@android:drawable/ic_input_add"
             android:tint="@android:color/white"
             app:backgroundTint="@color/wcsColor"

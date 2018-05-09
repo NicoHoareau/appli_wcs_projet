@@ -1,6 +1,7 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -96,6 +101,7 @@ public class RequestFragment extends Fragment {
         mListener = null;
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -104,6 +110,8 @@ public class RequestFragment extends Fragment {
         ArrayList<RequestModel> arrayList = new ArrayList<>();
         RequestAdapter adapter = new RequestAdapter(getContext(), 0, arrayList);
         listRequest.setAdapter(adapter);
+
+
 
     }
 
