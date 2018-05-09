@@ -29,9 +29,20 @@
 
         <activity android:name=".ConnexionActivity"/>
 
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".InscriptionActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MenuActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".CreateRequestActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ProfilActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".ConnexionActivity"/>
 
         <activity android:name=".OubliePassword"
             android:theme="@style/AppTheme.NoActionBar"/>
