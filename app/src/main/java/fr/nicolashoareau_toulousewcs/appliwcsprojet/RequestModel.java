@@ -1,5 +1,7 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
+import java.util.Date;
+
 /**
  * Created by wilder on 22/04/18.
  */
@@ -7,26 +9,40 @@ package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 public class RequestModel {
 
     private String description;
-    private String request;
+    private String idRequest;
+    private Date date;
 
-    public RequestModel(String description, String request){
-        this.description = description;
-        this.request = request;
+    public RequestModel(){
+
     }
 
-    public void setDescription(String description) {
+    public RequestModel(String description, Date date, String idRequest){
         this.description = description;
-    }
-
-    public void setRequest(String request) {
-        this.request = request;
+        this.date = date;
+        this.idRequest = idRequest;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getRequest() {
-        return request;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getIdRequest() {
+        return idRequest;
+    }
+
+    public void setIdRequest(String idRequest) {
+        this.idRequest = idRequest;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

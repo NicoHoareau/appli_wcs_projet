@@ -11,15 +11,6 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <activity android:name=".SplashScreenActivity">
-
-
-        </activity>
-
-        <activity
-            android:name=".InscriptionActivity" />
-
-        <activity
-            android:name=".MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,23 +20,24 @@
 
         <activity android:name=".ConnexionActivity"/>
 
-        <activity android:name=".MainActivity" />
         <activity
-            android:name=".InscriptionActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MenuActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".CreateRequestActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfilActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".InscriptionActivity" />
 
-        <activity android:name=".ConnexionActivity"/>
+        <activity
+            android:name=".MenuActivity">
+        </activity>
 
-        <activity android:name=".OubliePassword"
-            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".CreateRequestActivity" />
+
+        <activity android:name=".ProfilActivity">
+
+        </activity>
+
+
+
+        <activity android:name=".OubliePassword" />
     </application>
 
 </manifest>

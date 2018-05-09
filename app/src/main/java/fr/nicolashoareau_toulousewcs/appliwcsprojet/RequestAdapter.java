@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 public class RequestAdapter  extends ArrayAdapter<RequestModel> {
 
-    public RequestAdapter(Context context, int i, ArrayList<RequestModel> requestModels) {
-        super(context, 0, requestModels);
+    public RequestAdapter(Context context, int i, ArrayList<RequestModel> requestModel) {
+        super(context, 0, requestModel);
     }
 
     @Override
@@ -26,11 +26,16 @@ public class RequestAdapter  extends ArrayAdapter<RequestModel> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_fragment_request, parent, false);
         }
-        TextView tvRequest = convertView.findViewById(R.id.tv_request);
-        TextView tvDescription = convertView.findViewById(R.id.tv_description_request);
+        TextView tvCodeRequest = convertView.findViewById(R.id.tv_code_request);
+        TextView tvDescription = convertView.findViewById(R.id.et_description);
+        TextView tvDate = convertView.findViewById(R.id.tv_date_request);
 
-        tvRequest.setText(request.getRequest());
+        tvCodeRequest.setText(request.getIdRequest());
         tvDescription.setText(request.getDescription());
+
+        //créer un nouveau SimpleDateFormat et le pattern correspondant
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        String dateformat = sdf.format(request.getDate());
 
         return convertView;
     }

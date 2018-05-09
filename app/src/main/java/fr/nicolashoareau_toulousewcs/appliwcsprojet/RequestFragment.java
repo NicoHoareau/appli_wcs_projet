@@ -3,10 +3,15 @@ package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -89,6 +94,17 @@ public class RequestFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        ListView listRequest = getView().findViewById(R.id.list_request);
+        ArrayList<RequestModel> arrayList = new ArrayList<>();
+        RequestAdapter adapter = new RequestAdapter(getContext(), 0, arrayList);
+        listRequest.setAdapter(adapter);
+
     }
 
     /**
