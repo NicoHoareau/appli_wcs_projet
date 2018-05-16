@@ -58,7 +58,7 @@ public class CreateRequestActivity extends AppCompatActivity {
                 mCreateRequestRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        RequestModel requestModel = new RequestModel(description, codeRequest, currentTime.getTime());
+                        RequestModel requestModel = new RequestModel(description, codeRequest, currentTime.getTime(), false);
                         mCreateRequestRef.setValue(requestModel);
                     }
 

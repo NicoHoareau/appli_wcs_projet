@@ -9,15 +9,17 @@ public class RequestModel {
     private String description;
     private String idRequest;
     private long date;
+    private boolean validated = false;
 
     public RequestModel(){
 
     }
 
-    public RequestModel(String description, String idRequest, long date){
+    public RequestModel(String description, String idRequest, long date, boolean validated){
         this.description = description;
         this.idRequest = idRequest;
         this.date = date;
+        this.validated = validated;
     }
 
     public String getDescription() {
@@ -42,5 +44,13 @@ public class RequestModel {
 
     public void setDate(long date) {
         this.date = date;
+    }
+
+    public boolean isValidated() {
+        return validated;
+    }
+
+    public void setValidated(boolean validated) {
+        this.validated = validated;
     }
 }
