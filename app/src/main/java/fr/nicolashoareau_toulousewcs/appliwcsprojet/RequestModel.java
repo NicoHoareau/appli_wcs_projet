@@ -1,7 +1,5 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
-import java.util.Date;
-
 /**
  * Created by wilder on 22/04/18.
  */
@@ -10,16 +8,16 @@ public class RequestModel {
 
     private String description;
     private String idRequest;
-    private Date date;
+    private long date;
 
     public RequestModel(){
 
     }
 
-    public RequestModel(String description, Date date, String idRequest){
+    public RequestModel(String description, String idRequest, long date){
         this.description = description;
-        this.date = date;
         this.idRequest = idRequest;
+        this.date = date;
     }
 
     public String getDescription() {
@@ -38,11 +36,11 @@ public class RequestModel {
         this.idRequest = idRequest;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 }

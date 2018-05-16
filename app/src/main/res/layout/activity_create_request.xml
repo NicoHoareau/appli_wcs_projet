@@ -18,6 +18,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tv_code_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_indic_name_request"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="..." />
+
+    <TextView
+        android:id="@+id/tv_date_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Date"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_indic_name_request" />
+
     <EditText
         android:id="@+id/et_description"
         android:layout_width="265dp"
@@ -35,32 +56,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_date_request" />
 
-    <Button
-        android:id="@+id/btn_validate_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="casual"
-        android:onClick="validateRequest"
-        android:text="@string/validate"
-        android:textColor="#FBA858"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_description" />
-
-    <TextView
-        android:id="@+id/tv_code_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_indic_name_request"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="..." />
-
     <ImageView
         android:id="@+id/iv_delete"
         android:layout_width="36dp"
@@ -73,18 +68,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_date_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_indic_name_request"
-        tools:text="date" />
-
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_view_more"
         android:layout_width="36dp"
         android:layout_height="28dp"
         android:layout_marginEnd="16dp"
@@ -94,5 +79,20 @@
         app:layout_constraintStart_toEndOf="@+id/et_description"
         app:layout_constraintTop_toBottomOf="@+id/iv_delete"
         app:srcCompat="@mipmap/ic_launcher" />
+
+    <Button
+        android:id="@+id/btn_validate_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="casual"
+        android:text="@string/validate"
+        android:textColor="#FBA858"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_description" />
 
 </android.support.constraint.ConstraintLayout>
