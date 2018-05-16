@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_date_request" />
 
     <ImageView
-        android:id="@+id/iv_delete"
+        android:id="@+id/iv_validate"
         android:layout_width="36dp"
         android:layout_height="28dp"
         android:layout_marginEnd="16dp"
@@ -77,7 +77,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/et_description"
-        app:layout_constraintTop_toBottomOf="@+id/iv_delete"
+        app:layout_constraintTop_toBottomOf="@+id/iv_validate"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <Button

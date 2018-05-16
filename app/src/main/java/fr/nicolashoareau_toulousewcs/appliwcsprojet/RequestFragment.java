@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -111,7 +113,6 @@ public class RequestFragment extends Fragment {
     DatabaseReference mRef;
     private String mUid;
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -142,10 +143,6 @@ public class RequestFragment extends Fragment {
             }
         });
 
-
-
-
-
         mBtnFloat = view.findViewById(R.id.btn_float_request);
         mBtnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,9 +152,8 @@ public class RequestFragment extends Fragment {
             }
         });
 
-
-
     }
+
 
     /**
      * This interface must be implemented by activities that contain this

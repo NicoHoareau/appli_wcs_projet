@@ -5,16 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/iv_display_all"
-        android:layout_width="35dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_delete"
-        app:srcCompat="@mipmap/ic_launcher" />
-
     <TextView
         android:id="@+id/tv_id_request"
         android:layout_width="wrap_content"
@@ -24,6 +14,17 @@
         android:text="@string/request_one"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_date_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_id_request"
+        tools:text="date" />
 
     <TextView
         android:id="@+id/tv_description_request"
@@ -39,7 +40,7 @@
         tools:text="Description" />
 
     <ImageView
-        android:id="@+id/iv_delete"
+        android:id="@+id/iv_validate"
         android:layout_width="35dp"
         android:layout_height="32dp"
         android:layout_marginEnd="16dp"
@@ -48,14 +49,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_date_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_id_request"
-        tools:text="date" />
+    <ImageView
+        android:id="@+id/iv_display_all"
+        android:layout_width="35dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_validate"
+        app:srcCompat="@mipmap/ic_launcher" />
+
 </android.support.constraint.ConstraintLayout>

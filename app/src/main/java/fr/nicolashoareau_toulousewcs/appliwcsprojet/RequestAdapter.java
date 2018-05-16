@@ -1,10 +1,12 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -39,7 +41,6 @@ public class RequestAdapter  extends ArrayAdapter<RequestModel> {
         tvDate.setText(dateformat);
 
         return convertView;
+
     }
-
-
 }
