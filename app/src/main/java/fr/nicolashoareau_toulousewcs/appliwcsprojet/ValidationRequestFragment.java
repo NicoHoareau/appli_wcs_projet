@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -102,7 +103,43 @@ public class ValidationRequestFragment extends Fragment {
         mListener = null;
     }
 
-     /**
+    FirebaseDatabase mDatabase;
+    DatabaseReference mRef;
+    private String mUid;
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        mDatabase = FirebaseDatabase.getInstance();
+        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        ListView listValidated = getView().findViewById(R.id.list_validated);
+        final ArrayList<RequestModel> modelArrayList = new ArrayList<>();
+        final ValidatedAdapter validatedAdapter = new ValidatedAdapter(getContext(), modelArrayList);
+        listValidated.setAdapter(validatedAdapter);
+
+        mRef = mDatabase.getReference("Request").child(mUid);
+        mRef.orderByChild("date").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                modelArrayList.clear();
+                for (DataSnapshot listSnapshot : dataSnapshot.getChildren()){
+                    RequestModel requestModel = listSnapshot.getValue(RequestModel.class);
+                    if (requestModel.isValidated()){
+                        modelArrayList.add(requestModel);
+                    }
+                }
+                validatedAdapter.notifyDataSetChanged();
+                Collections.reverse(modelArrayList);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
