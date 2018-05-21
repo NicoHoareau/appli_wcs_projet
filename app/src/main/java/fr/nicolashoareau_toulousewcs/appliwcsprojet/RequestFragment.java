@@ -1,12 +1,27 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -90,6 +105,53 @@ public class RequestFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    FloatingActionButton mBtnFloat;
+    FirebaseDatabase mDatabase;
+    DatabaseReference mRef;
+    private String mUid;
+
+    @Override
+    public void onViewCreated(View view,  Bundle savedInstanceState) {
+        mDatabase = FirebaseDatabase.getInstance();
+
+        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        ListView listRequest = getView().findViewById(R.id.list_request);
+        final ArrayList<RequestModel> arrayList = new ArrayList<>();
+        final RequestAdapter adapter = new RequestAdapter(getContext(), arrayList);
+        listRequest.setAdapter(adapter);
+
+        mRef = mDatabase.getReference("Request").child(mUid);
+        mRef.orderByChild("date").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                arrayList.clear();
+                for (DataSnapshot listSnapshot : dataSnapshot.getChildren()){
+                    RequestModel requestModel = listSnapshot.getValue(RequestModel.class);
+                    arrayList.add(requestModel);
+                }
+                adapter.notifyDataSetChanged();
+                Collections.reverse(arrayList);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
+
+
+        mBtnFloat = view.findViewById(R.id.btn_float_request);
+        mBtnFloat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToCreateRequest = new Intent(getContext(), CreateRequestActivity.class);
+                startActivity(goToCreateRequest);
+            }
+        });
+
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this

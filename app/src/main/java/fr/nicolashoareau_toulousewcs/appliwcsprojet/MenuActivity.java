@@ -1,8 +1,9 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -10,10 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity implements RequestFragment.OnFragmentInteractionListener, ValidationRequestFragment.OnFragmentInteractionListener, ActualityFragment.OnFragmentInteractionListener{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +38,17 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
                 finish();
             }
         });
-/*
-        FloatingActionButton addQcm = findViewById(R.id.btn_float_request);
-        addQcm.setOnClickListener(new View.OnClickListener() {
+
+        ImageView profile = findViewById(R.id.iv_profile);
+        profile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent goToCreateRequest= new Intent(MenuActivity.this, CreateRequestActivity.class);
-                MenuActivity.this.startActivity(goToCreateRequest);;
+            public void onClick(View v) {
+                Intent goToProfile = new Intent(MenuActivity.this, ProfilActivity.class);
+                MenuActivity.this.startActivity(goToProfile);
             }
         });
-*/
+
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab1));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab2));
@@ -69,13 +78,14 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
         });
 
 
+
+
     }
 
 
     @Override
     public void onFragmentInteraction(Uri uri) {
     }
-
 
 
 }
