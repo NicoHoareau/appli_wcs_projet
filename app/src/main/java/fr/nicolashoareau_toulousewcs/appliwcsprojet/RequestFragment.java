@@ -114,7 +114,6 @@ public class RequestFragment extends Fragment {
     @Override
     public void onViewCreated(View view,  Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance();
-
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         ListView listRequest = getView().findViewById(R.id.list_request);
@@ -129,7 +128,9 @@ public class RequestFragment extends Fragment {
                 arrayList.clear();
                 for (DataSnapshot listSnapshot : dataSnapshot.getChildren()){
                     RequestModel requestModel = listSnapshot.getValue(RequestModel.class);
-                    arrayList.add(requestModel);
+                    if (!requestModel.isValidated()){
+                        arrayList.add(requestModel);
+                    }
                 }
                 adapter.notifyDataSetChanged();
                 Collections.reverse(arrayList);
