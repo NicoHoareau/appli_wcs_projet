@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -110,34 +112,34 @@ public class RequestFragment extends Fragment {
     private String mUid;
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onViewCreated(View view,  Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance();
 
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         ListView listRequest = getView().findViewById(R.id.list_request);
         final ArrayList<RequestModel> arrayList = new ArrayList<>();
-        final RequestAdapter adapter = new RequestAdapter(getContext(), 0, arrayList);
+        final RequestAdapter adapter = new RequestAdapter(getContext(), arrayList);
         listRequest.setAdapter(adapter);
 
         mRef = mDatabase.getReference("Request").child(mUid);
-        mRef.addValueEventListener(new ValueEventListener() {
+        mRef.orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                arrayList.clear(); // vide la liste par précaution
-                RequestModel requestModel = dataSnapshot.getValue(RequestModel.class);
-                arrayList.add(requestModel);
-
-
-                adapter.notifyDataSetChanged(); // met au courant l'adapter que la liste a changé
-
+                arrayList.clear();
+                for (DataSnapshot listSnapshot : dataSnapshot.getChildren()){
+                    RequestModel requestModel = listSnapshot.getValue(RequestModel.class);
+                    arrayList.add(requestModel);
+                }
+                adapter.notifyDataSetChanged();
+                Collections.reverse(arrayList);
             }
             @Override
             public void onCancelled(DatabaseError error) {
 
             }
         });
+
 
         mBtnFloat = view.findViewById(R.id.btn_float_request);
         mBtnFloat.setOnClickListener(new View.OnClickListener() {

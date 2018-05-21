@@ -64,7 +64,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_description_modify" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_ok_modifiy_request"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/et_description_modify"
@@ -79,4 +80,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_modify_request"
         tools:text="Description" />
+
+    <Button
+        android:id="@+id/btn_ok_modifiy_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        android:text="Valider la modification"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_description_modify" />
 </android.support.constraint.ConstraintLayout>

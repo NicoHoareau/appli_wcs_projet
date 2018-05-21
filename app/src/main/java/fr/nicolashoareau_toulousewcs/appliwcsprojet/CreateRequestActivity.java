@@ -38,8 +38,11 @@ public class CreateRequestActivity extends AppCompatActivity {
         //Génération d'un id unique
         String key1 = "123456789";
         String key2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        final String codeRequest = String.format("#%s%s%s", "REQ", generateString(3, key1), generateString(3, key2));
+        final String codeRequest = String.format("%s%s%s", "REQ", generateString(3, key1), generateString(3, key2));
         tvCodeRequest.setText(codeRequest);
+        mCreateRequestRef = mDatabase.getReference("Request").child(mUid);
+        RequestModel requestModel = new RequestModel(" ", codeRequest, 0, false);
+        mCreateRequestRef.child(codeRequest).setValue(requestModel);
 
         TextView tvDate  = (TextView) findViewById(R.id.tv_date_request);
         final Date currentTime = Calendar.getInstance().getTime();
@@ -47,28 +50,32 @@ public class CreateRequestActivity extends AppCompatActivity {
         String date = formatter.format(currentTime);
         tvDate.setText(date);
 
+        final EditText etDescription = (EditText) findViewById(R.id.et_description);
+
         Button validateRequest = (Button) findViewById(R.id.btn_validate_request);
         validateRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText etDescription = (EditText) findViewById(R.id.et_description);
                 final String description = etDescription.getText().toString();
+                mCreateRequestRef = mDatabase.getReference("Request").child(mUid).child(codeRequest);
 
-                mCreateRequestRef = mDatabase.getReference("Request").child(mUid);
+                // Read from the database
                 mCreateRequestRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         RequestModel requestModel = new RequestModel(description, codeRequest, currentTime.getTime(), false);
                         mCreateRequestRef.setValue(requestModel);
+
+                        Intent intent = new Intent(CreateRequestActivity.this, MenuActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                    public void onCancelled(DatabaseError error) {
 
                     }
                 });
-                Intent intent = new Intent(CreateRequestActivity.this, MenuActivity.class);
-                startActivity(intent);
+
             }
         });
     }

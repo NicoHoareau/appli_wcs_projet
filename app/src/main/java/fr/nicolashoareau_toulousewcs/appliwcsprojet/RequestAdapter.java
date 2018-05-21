@@ -1,6 +1,7 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
 import android.content.Context;
+import android.provider.ContactsContract;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +19,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,34 +32,35 @@ import java.util.Date;
  */
 
 public class RequestAdapter extends ArrayAdapter<RequestModel> {
-
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
     private String mUid;
 
-    public RequestAdapter(Context context, int i, ArrayList<RequestModel> requestModel) {
-        super(context, 0, requestModel);
+    public RequestAdapter(Context context, ArrayList<RequestModel> requestModels) {
+        super(context, 0, requestModels);
     }
 
     @Override
     public View getView(int position, View convertView, final ViewGroup parent) {
-        final RequestModel request = getItem(position);
+        final RequestModel requestModel = (RequestModel) getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_fragment_request, parent, false);
         }
-        TextView tvCodeRequest = convertView.findViewById(R.id.tv_id_request);
-        TextView tvDescription = convertView.findViewById(R.id.tv_description_request);
-        TextView tvDate = convertView.findViewById(R.id.tv_date_request);
+        TextView tvIdRequest =  convertView.findViewById(R.id.tv_id_request);
+        tvIdRequest.setText(requestModel.getIdRequest());
 
-        tvCodeRequest.setText(request.getIdRequest());
-        tvDescription.setText(request.getDescription());
-
-        //créer un nouveau SimpleDateFormat et le pattern correspondant
+        TextView tvDate = convertView.findViewById(R.id.tv_dateRequest);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-        String dateformat = sdf.format(request.getDate());
+        String dateformat = sdf.format(requestModel.getDate());
         tvDate.setText(dateformat);
 
-        ImageView logoValidate = convertView.findViewById(R.id.iv_validate);
+        TextView tvDescription = convertView.findViewById(R.id.tv_descriptionRequest);
+        tvDescription.setText(requestModel.getDescription());
+
+        mDatabase = FirebaseDatabase.getInstance();
+        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        ImageView logoValidate = convertView.findViewById(R.id.iv_modify_request);
         logoValidate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,99 +69,102 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                 final View mView = li.inflate(R.layout.check_dialog, null);
                 mBuilder.setView(mView);
                 final AlertDialog dialog = mBuilder.create();
+
                 //Contains :
                 final TextView tvIdRequest = mView.findViewById(R.id.tv_id_request_dialog);
                 final TextView tvDateRequest = mView.findViewById(R.id.tv_date_dialog);
                 final TextView tvDescriptionRequest = mView.findViewById(R.id.tv_desc_dialog);
-
                 final EditText changeDescription = mView.findViewById(R.id.et_description_modify);
 
-                mDatabase = FirebaseDatabase.getInstance();
-                mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                 mRef = mDatabase.getReference("Request").child(mUid);
-                mRef.addValueEventListener(new ValueEventListener() {
+                mRef.orderByKey().addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        String idRequest = dataSnapshot.child("idRequest").getValue(String.class);
-                        long dateRequest = dataSnapshot.child("date").getValue(long.class);
-                        String descriptionRequest = dataSnapshot.child("description").getValue(String.class);
+                        for (DataSnapshot requestSnapshot : dataSnapshot.getChildren()) {
+                            final String idRequest = requestSnapshot.child("idRequest").getValue(String.class);
+                            String descriptionRequest = requestSnapshot.child("description").getValue(String.class);
 
-                        tvIdRequest.setText(idRequest);
+                            long dateRequest = requestSnapshot.child("date").getValue(long.class);
+                            Date d = new Date(dateRequest * 1000);
+                            Date today = Calendar.getInstance().getTime();
+                            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+                            String date = formatter.format(today);
+                            tvDateRequest.setText(date);
 
-                        Date d = new Date(dateRequest * 1000);
-                        Date today = Calendar.getInstance().getTime();
-                        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-                        String date = formatter.format(today);
-                        tvDateRequest.setText(date);
+                            tvDescriptionRequest.setText(descriptionRequest);
+                            tvIdRequest.setText(idRequest);
 
-                        tvDescriptionRequest.setText(descriptionRequest);
+                            Button btnModifyDescription = mView.findViewById(R.id.btn_modify_request);
+                            btnModifyDescription.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    changeDescription.setVisibility(View.VISIBLE);
+                                }
+                            });
+                            Button btnValidateModification = mView.findViewById(R.id.btn_ok_modifiy_request);
+                            btnValidateModification.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    final String descModified = changeDescription.getText().toString();
+                                    mRef = mDatabase.getReference("Request").child(mUid).child(idRequest);
+                                    mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            mRef.child("description").setValue(descModified);
+                                            changeDescription.setHint(descModified);
+                                        }
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                        }
+                                    });
+                                    changeDescription.setVisibility(View.GONE);
+                                }
+                            });
+                            Button btnValidate = mView.findViewById(R.id.btn_validate);
+                            btnValidate.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    mRef = mDatabase.getReference("Request").child(mUid).child(idRequest);
+                                    mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            mRef.child("validated").setValue(true);
+                                            dialog.cancel();
+                                        }
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                        }
+                                    });
+                                }
+                            });
+                        }
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
 
-                Button btnModifyDescription = mView.findViewById(R.id.btn_modify_request);
-                btnModifyDescription.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        changeDescription.setVisibility(View.VISIBLE);
-                        String descModified = changeDescription.getText().toString();
-                        mRef = mDatabase.getReference("Request").child(mUid);
-                        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                String descriptionHint = dataSnapshot.child("description").getValue(String.class);
-                                changeDescription.setHint(descriptionHint);
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-                    }
-                });
-
-                Button btnValidate = mView.findViewById(R.id.btn_validate);
-                btnValidate.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        final String newDesc = (String) changeDescription.getText().toString();
-                        mRef = mDatabase.getReference("Request").child(mUid);
-                        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                RequestModel requestModel = dataSnapshot.getValue(RequestModel.class);
-                                mRef.child("description").setValue(newDesc);
-                                //boolean validated in true :
-                                mRef.child("validated").setValue(true);
-
-                                dialog.cancel();
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-
-                            }
-                        });
-
-                    }
-                });
-
-
 
 
                 dialog.show();
 
-
-
             }
         });
-
+        ImageView removeRequest = convertView.findViewById(R.id.iv_remove_request);
+        removeRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Request").child(mUid).child(requestModel.getIdRequest());
+                databaseReference.removeValue();
+                Toast.makeText(getContext(), "Requête supprimée", Toast.LENGTH_SHORT).show();
+            }
+        });
         return convertView;
+
 
     }
 }
+
+

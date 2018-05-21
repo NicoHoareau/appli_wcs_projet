@@ -102,44 +102,7 @@ public class ValidationRequestFragment extends Fragment {
         mListener = null;
     }
 
-    FirebaseDatabase mDatabase;
-    DatabaseReference mRef;
-    private String mUid;
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mDatabase = FirebaseDatabase.getInstance();
-
-        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        ListView listValidated = getView().findViewById(R.id.list_validated);
-        final ArrayList<RequestModel> arrayList = new ArrayList<>();
-        final ValidatedAdapter adapter = new ValidatedAdapter(getContext(), 0, arrayList);
-        listValidated.setAdapter(adapter);
-
-        mRef = mDatabase.getReference("Request").child(mUid);
-        mRef.orderByChild("validated").equalTo(true).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                arrayList.clear(); // vide la liste par précaution
-                RequestModel requestModel = dataSnapshot.getValue(RequestModel.class);
-                arrayList.add(requestModel);
-
-
-                adapter.notifyDataSetChanged(); // met au courant l'adapter que la liste a changé
-
-            }
-            @Override
-            public void onCancelled(DatabaseError error) {
-
-            }
-        });
-
-
-    }
-
-    /**
+     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
