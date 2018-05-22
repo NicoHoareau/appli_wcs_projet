@@ -28,7 +28,7 @@ public class ValidatedAdapter extends ArrayAdapter<RequestModel> {
         TextView tvDescriptionValidated = convertView.findViewById(R.id.tv_description_validated_request);
 
         tvIdRequestValidated.setText(requestModel.getIdRequest());
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dateformat = sdf.format(requestModel.getDate());
         tvDateRequestValidated.setText(dateformat);
         tvDescriptionValidated.setText(requestModel.getDescription());
