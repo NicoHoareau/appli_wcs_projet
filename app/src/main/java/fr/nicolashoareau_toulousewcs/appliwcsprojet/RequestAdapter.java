@@ -50,7 +50,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         tvIdRequest.setText(requestModel.getIdRequest());
 
         TextView tvDate = convertView.findViewById(R.id.tv_dateRequest);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dateformat = sdf.format(requestModel.getDate());
         tvDate.setText(dateformat);
 
