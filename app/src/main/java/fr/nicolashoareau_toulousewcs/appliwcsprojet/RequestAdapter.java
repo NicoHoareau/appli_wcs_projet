@@ -34,14 +34,13 @@ import java.util.Date;
 public class RequestAdapter extends ArrayAdapter<RequestModel> {
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
-    private String mUid;
 
     public RequestAdapter(Context context, ArrayList<RequestModel> requestModels) {
         super(context, 0, requestModels);
     }
 
     @Override
-    public View getView(int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         final RequestModel requestModel = (RequestModel) getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_fragment_request, parent, false);
@@ -54,11 +53,10 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         String dateformat = sdf.format(requestModel.getDate());
         tvDate.setText(dateformat);
 
-        TextView tvDescription = convertView.findViewById(R.id.tv_descriptionRequest);
+        final TextView tvDescription = convertView.findViewById(R.id.tv_descriptionRequest);
         tvDescription.setText(requestModel.getDescription());
 
         mDatabase = FirebaseDatabase.getInstance();
-        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         ImageView logoValidate = convertView.findViewById(R.id.iv_modify_request);
         logoValidate.setOnClickListener(new View.OnClickListener() {
@@ -77,23 +75,20 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                 final EditText changeDescription = mView.findViewById(R.id.et_description_modify);
 
 
-                mRef = mDatabase.getReference("Request").child(mUid);
-                mRef.orderByKey().addValueEventListener(new ValueEventListener() {
+                mRef = mDatabase.getReference("Request");
+                mRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot requestSnapshot : dataSnapshot.getChildren()) {
-                            final String idRequest = requestSnapshot.child("idRequest").getValue(String.class);
-                            String descriptionRequest = requestSnapshot.child("description").getValue(String.class);
+                            String idRequest = requestModel.getIdRequest();
+                            tvIdRequest.setText(idRequest);
+                            String descriptionRequest = requestModel.getDescription();
+                            tvDescriptionRequest.setText(descriptionRequest);
 
-                            long dateRequest = requestSnapshot.child("date").getValue(long.class);
-                            Date d = new Date(dateRequest * 1000);
                             Date today = Calendar.getInstance().getTime();
                             SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                             String date = formatter.format(today);
                             tvDateRequest.setText(date);
-
-                            tvDescriptionRequest.setText(descriptionRequest);
-                            tvIdRequest.setText(idRequest);
 
                             Button btnModifyDescription = mView.findViewById(R.id.btn_modify_request);
                             btnModifyDescription.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +102,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                                 @Override
                                 public void onClick(View v) {
                                     final String descModified = changeDescription.getText().toString();
-                                    mRef = mDatabase.getReference("Request").child(mUid).child(idRequest);
+                                    mRef = mDatabase.getReference("Request").child(requestModel.getIdRequest());
                                     mRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -119,13 +114,15 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                                         }
                                     });
                                     changeDescription.setVisibility(View.GONE);
+                                    dialog.cancel();
                                 }
                             });
+
                             Button btnValidate = mView.findViewById(R.id.btn_validate);
                             btnValidate.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    mRef = mDatabase.getReference("Request").child(mUid).child(idRequest);
+                                    mRef = mDatabase.getReference("Request").child(requestModel.getIdRequest());
                                     mRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -156,7 +153,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         removeRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Request").child(mUid).child(requestModel.getIdRequest());
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Request").child(requestModel.getIdRequest());
                 databaseReference.removeValue();
                 Toast.makeText(getContext(), "Requête supprimée", Toast.LENGTH_SHORT).show();
             }

@@ -121,7 +121,7 @@ public class RequestFragment extends Fragment {
         final RequestAdapter adapter = new RequestAdapter(getContext(), arrayList);
         listRequest.setAdapter(adapter);
 
-        mRef = mDatabase.getReference("Request").child(mUid);
+        mRef = mDatabase.getReference("Request");
         mRef.orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
