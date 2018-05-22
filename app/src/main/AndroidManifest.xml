@@ -24,21 +24,15 @@
             android:name=".InscriptionActivity" />
 
         <activity
-            android:name=".MenuActivity">
-        </activity>
+            android:name=".MenuActivity"/>
 
 
-        <activity android:name=".CreateRequestActivity" >
+        <activity android:name=".CreateRequestActivity" />
 
-        </activity>
+        <activity android:name=".ProfilActivity"/>
 
-        <activity android:name=".ProfilActivity">
-
-        </activity>
-
-
-
-        <activity android:name=".OubliePassword" />
+        <activity android:name=".OubliePassword"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
