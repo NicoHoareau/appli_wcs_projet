@@ -18,26 +18,13 @@ import com.google.firebase.storage.StorageReference;
 
 public class ProfilActivity extends AppCompatActivity {
 
-    private DatabaseReference mDatabaseReference;
-    private FirebaseDatabase mDatabase;
-    private FirebaseAuth mAuth;
-    private StorageReference mStorageReference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-
-
-        mDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        mStorageReference = FirebaseStorage.getInstance().getReference();
-        mAuth = FirebaseAuth.getInstance();
-
-
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference pathID = mDatabase.getReference("User").child(uid);
+        DatabaseReference pathID = FirebaseDatabase.getInstance().getReference("User").child(uid);
 
         pathID.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -53,8 +40,14 @@ public class ProfilActivity extends AppCompatActivity {
                 tvPseudo.setText(pseudo);
 
                 String language = dataSnapshot.child("Profil").child("language").getValue(String.class);
-                TextView tvLanguage = findViewById(R.id.tv_language);
-                tvLanguage.setText(language);
+                ImageView logoLanguage = findViewById(R.id.iv_logo_language);
+                if (language.equals("Java")) {
+                    Glide.with(getApplicationContext()).load(R.drawable.java_logo).into(logoLanguage);
+                }
+                else {
+                    Glide.with(getApplicationContext()).load(R.drawable.js_logo).into(logoLanguage);
+                }
+
 
                 String promo = dataSnapshot.child("Profil").child("promo").getValue(String.class);
                 TextView tvPromo = findViewById(R.id.tv_promo);
