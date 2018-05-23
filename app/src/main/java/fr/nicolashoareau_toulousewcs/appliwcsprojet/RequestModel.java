@@ -10,16 +10,18 @@ public class RequestModel {
     private String idRequest;
     private long date;
     private boolean validated = false;
+    private String idUser;
 
     public RequestModel(){
 
     }
 
-    public RequestModel(String description, String idRequest, long date, boolean validated){
+    public RequestModel(String description, String idRequest, long date, boolean validated, String idUser){
         this.description = description;
         this.idRequest = idRequest;
         this.date = date;
         this.validated = validated;
+        this.idUser = idUser;
     }
 
     public String getDescription() {
@@ -51,5 +53,13 @@ public class RequestModel {
 
     public void setValidated(boolean validated) {
         this.validated = validated;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getIdUser() {
+        return idUser;
     }
 }
