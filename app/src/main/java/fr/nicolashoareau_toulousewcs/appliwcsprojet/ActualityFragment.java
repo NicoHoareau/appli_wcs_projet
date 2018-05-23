@@ -118,8 +118,8 @@ public class ActualityFragment extends Fragment {
         mBtnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToCreateRequest = new Intent(getContext(), CreateRequestActivity.class);
-                startActivity(goToCreateRequest);
+                Intent goToCreatePost = new Intent(getContext(), CreatePostActivity.class);
+                startActivity(goToCreatePost);
             }
         });
 

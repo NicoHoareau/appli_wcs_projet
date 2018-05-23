@@ -32,7 +32,7 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
 
         Glide.with(parent.getContext()).load(actualityModel.getUrlPhotoUser()).into(ivUserPhoto);
         Glide.with(parent.getContext()).load(actualityModel.getUrlPhoto()).into(ivAddPhoto);
-        tvUsernameUser.setText(actualityModel.getUsername());
+        tvUsernameUser.setText(actualityModel.getUserId());
         etDescriptionPhoto.setText(actualityModel.getDescription());
 
         return convertView;

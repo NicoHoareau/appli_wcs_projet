@@ -59,7 +59,6 @@ public class CreateRequestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String description = etDescription.getText().toString();
                 mCreateRequestRef = mDatabase.getReference("Request").child(codeRequest);
-
                 // Read from the database
                 mCreateRequestRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

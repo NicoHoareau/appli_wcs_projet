@@ -53,7 +53,6 @@ public class CreateProfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profil);
 
-
         Button btnCamera;
         Button btnGallery;
         Button btnLink;

@@ -1,7 +1,7 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
 public class ActualityModel {
-    private String username;
+    private String userId;
     private String description;
     private String urlPhoto;
     private String urlPhotoUser;
@@ -11,20 +11,30 @@ public class ActualityModel {
 
     }
 
-    public ActualityModel(String username, String description, String urlPhoto, String urlPhotoUser, long datePost) {
-        this.username = username;
+    public ActualityModel(String userId, String description, String urlPhoto, String urlPhotoUser, long datePost) {
+        this.userId = userId;
         this.description = description;
         this.urlPhoto = urlPhoto;
         this.urlPhotoUser = urlPhotoUser;
         this.datePost = datePost;
     }
 
-    public String getUsername() {
-        return username;
+
+    public ActualityModel(String userId, String description, String urlPhoto, long datePost) {
+        this.userId = userId;
+        this.description = description;
+        this.urlPhoto = urlPhoto;
+        this.datePost = datePost;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getDescription() {
