@@ -40,7 +40,7 @@ public class CreateRequestActivity extends AppCompatActivity {
         String key2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         final String codeRequest = String.format("%s%s%s", "REQ", generateString(3, key1), generateString(3, key2));
         tvCodeRequest.setText(codeRequest);
-        mCreateRequestRef = mDatabase.getReference("Request").child(mUid);
+        mCreateRequestRef = mDatabase.getReference("Request");
         RequestModel requestModel = new RequestModel(" ", codeRequest, 0, false);
         mCreateRequestRef.child(codeRequest).setValue(requestModel);
 
@@ -57,7 +57,7 @@ public class CreateRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String description = etDescription.getText().toString();
-                mCreateRequestRef = mDatabase.getReference("Request").child(mUid).child(codeRequest);
+                mCreateRequestRef = mDatabase.getReference("Request").child(codeRequest);
 
                 // Read from the database
                 mCreateRequestRef.addListenerForSingleValueEvent(new ValueEventListener() {
