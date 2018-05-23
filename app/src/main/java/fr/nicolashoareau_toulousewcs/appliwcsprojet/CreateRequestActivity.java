@@ -40,8 +40,9 @@ public class CreateRequestActivity extends AppCompatActivity {
         String key2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         final String codeRequest = String.format("%s%s%s", "REQ", generateString(3, key1), generateString(3, key2));
         tvCodeRequest.setText(codeRequest);
+
         mCreateRequestRef = mDatabase.getReference("Request");
-        RequestModel requestModel = new RequestModel(" ", codeRequest, 0, false);
+        RequestModel requestModel = new RequestModel(" ", codeRequest, 0, false, mUid);
         mCreateRequestRef.child(codeRequest).setValue(requestModel);
 
         TextView tvDate  = (TextView) findViewById(R.id.tv_date_request);
@@ -63,7 +64,7 @@ public class CreateRequestActivity extends AppCompatActivity {
                 mCreateRequestRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        RequestModel requestModel = new RequestModel(description, codeRequest, currentTime.getTime(), false);
+                        RequestModel requestModel = new RequestModel(description, codeRequest, currentTime.getTime(), false, mUid);
                         mCreateRequestRef.setValue(requestModel);
 
                         Intent intent = new Intent(CreateRequestActivity.this, MenuActivity.class);
