@@ -95,28 +95,32 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                                 @Override
                                 public void onClick(View v) {
                                     changeDescription.setVisibility(View.VISIBLE);
-                                }
-                            });
-                            Button btnValidateModification = mView.findViewById(R.id.btn_ok_modifiy_request);
-                            btnValidateModification.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    final String descModified = changeDescription.getText().toString();
-                                    mRef = mDatabase.getReference("Request").child(requestModel.getIdRequest());
-                                    mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    Button btnValidateModification = mView.findViewById(R.id.btn_ok_modifiy_request);
+                                    btnValidateModification.setVisibility(View.VISIBLE);
+                                    btnValidateModification.setOnClickListener(new View.OnClickListener() {
                                         @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            mRef.child("description").setValue(descModified);
-                                            changeDescription.setHint(descModified);
-                                        }
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
+                                        public void onClick(View v) {
+                                            final String descModified = changeDescription.getText().toString();
+                                            mRef = mDatabase.getReference("Request").child(requestModel.getIdRequest());
+                                            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    mRef.child("description").setValue(descModified);
+                                                    changeDescription.setHint(descModified);
+                                                }
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+                                                }
+                                            });
+                                            changeDescription.setVisibility(View.GONE);
+                                            dialog.cancel();
                                         }
                                     });
-                                    changeDescription.setVisibility(View.GONE);
-                                    dialog.cancel();
+
                                 }
                             });
+
+
 
                             Button btnValidate = mView.findViewById(R.id.btn_validate);
                             btnValidate.setOnClickListener(new View.OnClickListener() {
