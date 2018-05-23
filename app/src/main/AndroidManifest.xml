@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,22 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ConnexionActivity"/>
-
-        <activity
-            android:name=".InscriptionActivity" />
-
-        <activity
-            android:name=".MenuActivity"/>
-
-
+        <activity android:name=".ConnexionActivity" />
+        <activity android:name=".InscriptionActivity" />
+        <activity android:name=".MenuActivity" />
         <activity android:name=".CreateRequestActivity" />
-
-        <activity android:name=".ProfilActivity"/>
-
-        <activity android:name=".OubliePassword"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ProfilActivity" />
+        <activity
+            android:name=".OubliePassword"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CreatePostActivity"></activity>
     </application>
 
 </manifest>
