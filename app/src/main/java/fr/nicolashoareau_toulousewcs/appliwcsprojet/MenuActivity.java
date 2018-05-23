@@ -14,13 +14,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity implements RequestFragment.OnFragmentInteractionListener, ValidationRequestFragment.OnFragmentInteractionListener, ActualityFragment.OnFragmentInteractionListener{
+
+    private FirebaseDatabase mDatabase;
 
 
     @Override
@@ -39,7 +46,31 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
             }
         });
 
-        ImageView profile = findViewById(R.id.iv_profile);
+
+
+        final ImageView profile = findViewById(R.id.iv_profile);
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference pathID = mDatabase.getReference("User").child(uid);
+
+        pathID.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if ((dataSnapshot.child("Profil").child("profilPic").getValue() != null)) {
+                    String mUrlSave = dataSnapshot.child("Profil").child("profilPic").getValue(String.class);
+                    Glide.with(getApplicationContext()).load(mUrlSave)
+                            .apply(RequestOptions.circleCropTransform()).into(profile);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
