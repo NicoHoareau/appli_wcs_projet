@@ -117,7 +117,7 @@ public class ValidationRequestFragment extends Fragment {
         final ValidatedAdapter validatedAdapter = new ValidatedAdapter(getContext(), modelArrayList);
         listValidated.setAdapter(validatedAdapter);
 
-        mRef = mDatabase.getReference("Request").child(mUid);
+        mRef = mDatabase.getReference("Request");
         mRef.orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

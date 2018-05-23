@@ -33,10 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:text="desc"
+        android:layout_marginTop="68dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date_dialog" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_date_dialog"
+        tools:text="desc" />
 
     <Button
         android:id="@+id/btn_modify_request"
@@ -73,12 +73,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="text"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_modify_request"
+        app:layout_constraintTop_toBottomOf="@+id/tv_desc_dialog"
         tools:text="Description" />
 
     <Button
@@ -88,6 +88,7 @@
         android:layout_marginTop="28dp"
         android:background="@android:color/transparent"
         android:text="Valider la modification"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

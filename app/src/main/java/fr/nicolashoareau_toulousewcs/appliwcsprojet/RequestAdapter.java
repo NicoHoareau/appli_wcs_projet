@@ -34,14 +34,13 @@ import java.util.Date;
 public class RequestAdapter extends ArrayAdapter<RequestModel> {
     FirebaseDatabase mDatabase;
     DatabaseReference mRef;
-    private String mUid;
 
     public RequestAdapter(Context context, ArrayList<RequestModel> requestModels) {
         super(context, 0, requestModels);
     }
 
     @Override
-    public View getView(int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         final RequestModel requestModel = (RequestModel) getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_fragment_request, parent, false);
@@ -50,15 +49,14 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         tvIdRequest.setText(requestModel.getIdRequest());
 
         TextView tvDate = convertView.findViewById(R.id.tv_dateRequest);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dateformat = sdf.format(requestModel.getDate());
         tvDate.setText(dateformat);
 
-        TextView tvDescription = convertView.findViewById(R.id.tv_descriptionRequest);
+        final TextView tvDescription = convertView.findViewById(R.id.tv_descriptionRequest);
         tvDescription.setText(requestModel.getDescription());
 
         mDatabase = FirebaseDatabase.getInstance();
-        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         ImageView logoValidate = convertView.findViewById(R.id.iv_modify_request);
         logoValidate.setOnClickListener(new View.OnClickListener() {
@@ -77,55 +75,58 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                 final EditText changeDescription = mView.findViewById(R.id.et_description_modify);
 
 
-                mRef = mDatabase.getReference("Request").child(mUid);
-                mRef.orderByKey().addValueEventListener(new ValueEventListener() {
+                mRef = mDatabase.getReference("Request");
+                mRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot requestSnapshot : dataSnapshot.getChildren()) {
-                            final String idRequest = requestSnapshot.child("idRequest").getValue(String.class);
-                            String descriptionRequest = requestSnapshot.child("description").getValue(String.class);
+                            String idRequest = requestModel.getIdRequest();
+                            tvIdRequest.setText(idRequest);
+                            String descriptionRequest = requestModel.getDescription();
+                            tvDescriptionRequest.setText(descriptionRequest);
 
-                            long dateRequest = requestSnapshot.child("date").getValue(long.class);
-                            Date d = new Date(dateRequest * 1000);
                             Date today = Calendar.getInstance().getTime();
                             SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                             String date = formatter.format(today);
                             tvDateRequest.setText(date);
-
-                            tvDescriptionRequest.setText(descriptionRequest);
-                            tvIdRequest.setText(idRequest);
 
                             Button btnModifyDescription = mView.findViewById(R.id.btn_modify_request);
                             btnModifyDescription.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     changeDescription.setVisibility(View.VISIBLE);
-                                }
-                            });
-                            Button btnValidateModification = mView.findViewById(R.id.btn_ok_modifiy_request);
-                            btnValidateModification.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    final String descModified = changeDescription.getText().toString();
-                                    mRef = mDatabase.getReference("Request").child(mUid).child(idRequest);
-                                    mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    Button btnValidateModification = mView.findViewById(R.id.btn_ok_modifiy_request);
+                                    btnValidateModification.setVisibility(View.VISIBLE);
+                                    btnValidateModification.setOnClickListener(new View.OnClickListener() {
                                         @Override
-                                        public void onDataChange(DataSnapshot dataSnapshot) {
-                                            mRef.child("description").setValue(descModified);
-                                            changeDescription.setHint(descModified);
-                                        }
-                                        @Override
-                                        public void onCancelled(DatabaseError databaseError) {
+                                        public void onClick(View v) {
+                                            final String descModified = changeDescription.getText().toString();
+                                            mRef = mDatabase.getReference("Request").child(requestModel.getIdRequest());
+                                            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                                    mRef.child("description").setValue(descModified);
+                                                    changeDescription.setHint(descModified);
+                                                }
+                                                @Override
+                                                public void onCancelled(DatabaseError databaseError) {
+                                                }
+                                            });
+                                            changeDescription.setVisibility(View.GONE);
+                                            dialog.cancel();
                                         }
                                     });
-                                    changeDescription.setVisibility(View.GONE);
+
                                 }
                             });
+
+
+
                             Button btnValidate = mView.findViewById(R.id.btn_validate);
                             btnValidate.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    mRef = mDatabase.getReference("Request").child(mUid).child(idRequest);
+                                    mRef = mDatabase.getReference("Request").child(requestModel.getIdRequest());
                                     mRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -156,7 +157,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         removeRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Request").child(mUid).child(requestModel.getIdRequest());
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Request").child(requestModel.getIdRequest());
                 databaseReference.removeValue();
                 Toast.makeText(getContext(), "Requête supprimée", Toast.LENGTH_SHORT).show();
             }
