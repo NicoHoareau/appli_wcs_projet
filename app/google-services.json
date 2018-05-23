@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "383637190836-h16af69jb1kojd4age9vehdorov95fqr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.nicolashoareau_toulousewcs.appliwcsprojet",
+            "certificate_hash": "0395cfb73fe9f876598aa53c4eb3ef620f4048bd"
+          }
+        },
+        {
           "client_id": "383637190836-epo1cfjmisjr2olk6fs0v6g3m653p9mi.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
