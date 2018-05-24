@@ -108,6 +108,15 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
             }
         });
 
+        ImageView imageIconWCS = findViewById(R.id.img_icon);
+        imageIconWCS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 
