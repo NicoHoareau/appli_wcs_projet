@@ -19,6 +19,16 @@ public class ActualityModel {
         this.datePost = datePost;
     }
 
+
+    public ActualityModel(String username, String description, String urlPhoto, long datePost) {
+        this.username = username;
+        this.description = description;
+        this.urlPhoto = urlPhoto;
+        this.datePost = datePost;
+    }
+
+
+
     public String getUsername() {
         return username;
     }

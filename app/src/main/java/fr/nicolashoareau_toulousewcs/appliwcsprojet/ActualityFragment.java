@@ -12,10 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -118,8 +122,27 @@ public class ActualityFragment extends Fragment {
         mBtnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToCreateRequest = new Intent(getContext(), CreateRequestActivity.class);
-                startActivity(goToCreateRequest);
+                Intent goToCreatePost = new Intent(getContext(), CreatePostActivity.class);
+                startActivity(goToCreatePost);
+            }
+        });
+
+        mActualityRef = mDatabase.getReference("Post");
+        mActualityRef.orderByChild("date").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                actualityModelArrayList.clear();
+                for (DataSnapshot listActualitySnapshot : dataSnapshot.getChildren()){
+                    ActualityModel actualityModel = listActualitySnapshot.getValue(ActualityModel.class);
+                    actualityModelArrayList.add(actualityModel);
+
+                }
+                adapter.notifyDataSetChanged();
+                Collections.reverse(actualityModelArrayList);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+
             }
         });
 
