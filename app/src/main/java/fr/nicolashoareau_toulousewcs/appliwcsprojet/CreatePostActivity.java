@@ -93,7 +93,7 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String textDescriptionPost = etDescriptionPost.getText().toString();
-                mCreatePostRef = mDatabase.getReference("Post").child(mUid);
+                mCreatePostRef = mDatabase.getReference("Post");
                 mCreatePostRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -105,19 +105,19 @@ public class CreatePostActivity extends AppCompatActivity {
                                     Uri downloadUri = taskSnapshot.getDownloadUrl();
                                     String avatarUrl = downloadUri.toString();
                                     ActualityModel actualityModel = new ActualityModel(mUid, textDescriptionPost, avatarUrl,dateLong);
-                                    mCreatePostRef.setValue(actualityModel);
+                                    mCreatePostRef.push().setValue(actualityModel);
                                 }
                             });
                         }
-
-
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
                 });
+                Intent intent = new Intent(CreatePostActivity.this, MenuActivity.class);
+                startActivity(intent);
+
             }
         });
     }
