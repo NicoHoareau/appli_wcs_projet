@@ -35,7 +35,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        Button deco = findViewById(R.id.btn_deco);
+        ImageView deco = findViewById(R.id.btn_deco);
         deco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,6 +108,33 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
             }
         });
 
+
+        mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference userID = mDatabase.getReference("User").child(uid);
+
+        userID.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if ((dataSnapshot.child("Profil").child("pseudo").getValue() != null)) {
+                    final String pseudo = dataSnapshot.child("Profil").child("pseudo").getValue(String.class);
+
+                    ImageView imageIconWCS = findViewById(R.id.img_icon);
+                    imageIconWCS.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MenuActivity.this, ChatActivity.class);
+                            intent.putExtra("pseudo", pseudo);
+                            startActivity(intent);
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 

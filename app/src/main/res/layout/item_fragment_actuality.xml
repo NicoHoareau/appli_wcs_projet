@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/iv_photo_added"
         android:layout_width="match_parent"
-        android:layout_height="296dp"
+        android:layout_height="231dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:id="@+id/tv_description_actuality"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
