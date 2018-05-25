@@ -58,8 +58,9 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
 
         mDatabase = FirebaseDatabase.getInstance();
 
-        ImageView logoValidate = convertView.findViewById(R.id.iv_modify_request);
-        logoValidate.setOnClickListener(new View.OnClickListener() {
+        ImageView modifRequest = convertView.findViewById(R.id.iv_modify_request);
+
+        modifRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
