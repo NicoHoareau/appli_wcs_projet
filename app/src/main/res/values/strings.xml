@@ -26,5 +26,10 @@
     <string name="indication_description">Description :</string>
     <string name="validate">Valider</string>
     <string name="utilisateur_inconnu">Utilisateur inconnu</string>
+    <string name="edit_my_name">Modifier mon nom</string>
+    <string name="edit_my_pix">Changer ma photo</string>
+    <string name="select_source">Sélectionner une source pour changer la photo</string>
+    <string name="app_photo">Appareil photo</string>
+    <string name="galery">Galerie</string>
 
 </resources>

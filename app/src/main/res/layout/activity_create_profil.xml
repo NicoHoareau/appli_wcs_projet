@@ -24,8 +24,7 @@
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="32dp"
-
-        android:text="Photo"
+        android:text="@string/app_photo"
         app:layout_constraintEnd_toStartOf="@+id/btn_gallery"
         app:layout_constraintTop_toBottomOf="@+id/iv_profil_pic" />
 
@@ -37,7 +36,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
 
-        android:text="Gallerie"
+        android:text="@string/galery"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_profil_pic" />
