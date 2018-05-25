@@ -108,15 +108,33 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
             }
         });
 
-        ImageView imageIconWCS = findViewById(R.id.img_icon);
-        imageIconWCS.setOnClickListener(new View.OnClickListener() {
+
+        mDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference userID = mDatabase.getReference("User").child(uid);
+
+        userID.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, ChatActivity.class);
-                startActivity(intent);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if ((dataSnapshot.child("Profil").child("pseudo").getValue() != null)) {
+                    final String pseudo = dataSnapshot.child("Profil").child("pseudo").getValue(String.class);
+
+                    ImageView imageIconWCS = findViewById(R.id.img_icon);
+                    imageIconWCS.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MenuActivity.this, ChatActivity.class);
+                            intent.putExtra("pseudo", pseudo);
+                            startActivity(intent);
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
-
 
 
 
