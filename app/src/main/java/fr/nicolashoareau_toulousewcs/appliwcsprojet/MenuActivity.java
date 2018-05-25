@@ -35,7 +35,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        Button deco = findViewById(R.id.btn_deco);
+        ImageView deco = findViewById(R.id.btn_deco);
         deco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
