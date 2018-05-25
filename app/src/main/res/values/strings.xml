@@ -31,5 +31,13 @@
     <string name="select_source">Sélectionner une source pour changer la photo</string>
     <string name="app_photo">Appareil photo</string>
     <string name="galery">Galerie</string>
+    <string name="enter_pseudo">Entre ton pseudo</string>
+    <string name="java_android">Java/Android</string>
+    <string name="js_react">JS/React</string>
+    <string name="promotion">Promotion :</string>
+    <string name="fev">Fev</string>
+    <string name="sept">Sept</string>
+    <string name="annee">Année</string>
+    <string name="valider">Valider</string>
 
 </resources>
