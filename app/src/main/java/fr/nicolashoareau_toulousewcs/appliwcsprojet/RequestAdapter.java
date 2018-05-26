@@ -57,6 +57,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         tvDescription.setText(requestModel.getDescription());
 
         final ImageView btnEdit = convertView.findViewById(R.id.iv_modify_request);
+        ImageView btnRqOK = convertView.findViewById(R.id.iv_accept_request);
 
         mDatabase = FirebaseDatabase.getInstance();
 
@@ -66,7 +67,6 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot requestSnap : dataSnapshot.getChildren()) {
-                    String idReq = requestModel.getIdRequest();
                     if (mUid.equals(requestModel.getIdUser())) {
                         btnEdit.setVisibility(View.VISIBLE);
                     }
@@ -147,6 +147,25 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                     }
                 });
                 dialog.show();
+            }
+        });
+
+        btnRqOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                            mRef.child(requestModel.getIdRequest()).child("validated").setValue(true);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
