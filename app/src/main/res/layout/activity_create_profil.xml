@@ -28,12 +28,14 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_profil_pic">
 
         <ImageView
+            android:id="@+id/btn_camera"
             android:layout_width="40dp"
             android:layout_height="45dp"
             android:layout_marginRight="32dp"
             app:srcCompat="@drawable/app_photo" />
 
         <ImageView
+            android:id="@+id/btn_gallery"
             android:layout_width="45dp"
             android:layout_height="45dp"
             app:srcCompat="@drawable/album_photo" />
