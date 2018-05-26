@@ -3,13 +3,18 @@ package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 public class WildersModel {
 
     private String wilderUrlPhoto;
-    private String wilderName;
+    private String wilderPseudo;
     private String wilderPromo;
 
-    public WildersModel(String wilderUrlPhoto, String wilderName, String wilderPromo) {
+
+    public WildersModel(String wilderUrlPhoto, String wilderPseudo, String wilderPromo) {
         this.wilderUrlPhoto = wilderUrlPhoto;
-        this.wilderName = wilderName;
+        this.wilderPseudo = wilderPseudo;
         this.wilderPromo = wilderPromo;
+    }
+
+    public WildersModel(){
+
     }
 
     public String getWilderUrlPhoto() {
@@ -20,12 +25,12 @@ public class WildersModel {
         this.wilderUrlPhoto = wilderUrlPhoto;
     }
 
-    public String getWilderName() {
-        return wilderName;
+    public String getWilderPseudo() {
+        return wilderPseudo;
     }
 
-    public void setWilderName(String wilderName) {
-        this.wilderName = wilderName;
+    public void setWilderPseudo(String wilderPseudo) {
+        this.wilderPseudo = wilderPseudo;
     }
 
     public String getWilderPromo() {
@@ -35,4 +40,5 @@ public class WildersModel {
     public void setWilderPromo(String wilderPromo) {
         this.wilderPromo = wilderPromo;
     }
+
 }

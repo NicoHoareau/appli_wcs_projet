@@ -31,5 +31,26 @@
     <string name="select_source">Sélectionner une source pour changer la photo</string>
     <string name="app_photo">Appareil photo</string>
     <string name="galery">Galerie</string>
+    <string name="wild_club">Wild Club</string>
+    <string name="enter_msg">Enter your message</string>
+    <string name="wild_chat">Wild Chat</string>
+    <string name="textview">TextView</string>
+    <string name="description">Description</string>
+    <string name="check_post">Valider ce post</string>
+    <string name="date">Date</string>
+    <string name="hint">...</string>
+    <string name="pseudo">Pseudo</string>
+    <string name="splash_text">Application mobile pour la Wild Code School !</string>
+    <string name="id_request">id-Request</string>
+    <string name="modify_request">Modifier la requête</string>
+    <string name="check_modif">Valider la modification</string>
+    <string name="validate_request">Valider la requète</string>
+    <string name="faux">Lorem ipsoum balabla bla bla bla lnbalablablablablablablanb</string>
+
+    <string-array name="spinnerLanguage">
+        <item>Sélectionner un language :</item>
+        <item>Java</item>
+        <item>Javascript</item>
+    </string-array>
 
 </resources>
