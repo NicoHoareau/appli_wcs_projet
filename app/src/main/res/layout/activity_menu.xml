@@ -23,21 +23,30 @@
                 android:id="@+id/iv_profile"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 app:srcCompat="@drawable/logo_user2" />
+
+            <ImageView
+                android:id="@+id/iv_allusers"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="40dp"
+                android:layout_weight="0.4"
+                app:srcCompat="@drawable/logo_friends" />
 
             <ImageView
                 android:id="@+id/img_icon"
                 android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:layout_weight="4"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
                 android:src="@drawable/logo_wcs" />
 
             <ImageView
                 android:id="@+id/btn_deco"
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.5"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/ic_deconnection" />
 
         </LinearLayout>
