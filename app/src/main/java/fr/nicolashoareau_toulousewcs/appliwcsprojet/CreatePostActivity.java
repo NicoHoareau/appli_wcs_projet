@@ -165,7 +165,7 @@ public class CreatePostActivity extends AppCompatActivity {
                 try {
                     if (resultCode == RESULT_OK) {
                         mGetImageUrl = mFileUri.getPath();
-                        Glide.with(getApplicationContext()).load(mFileUri).apply(RequestOptions.circleCropTransform()).into(mAddPhoto);
+                        Glide.with(getApplicationContext()).load(mFileUri).into(mAddPhoto);
                     } else {
                         //nothing
                     }
@@ -179,7 +179,7 @@ public class CreatePostActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK) {
                         mFileUri = data.getData();
                         mGetImageUrl = mFileUri.getPath();
-                        Glide.with(getApplicationContext()).load(mFileUri).apply(RequestOptions.circleCropTransform()).into(mAddPhoto);
+                        Glide.with(getApplicationContext()).load(mFileUri).into(mAddPhoto);
                     }
 
                 } catch (Exception e) {
