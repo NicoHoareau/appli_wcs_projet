@@ -129,11 +129,6 @@ public class ProfilActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
 
     @Override

@@ -1,10 +1,19 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -107,6 +116,26 @@ public class WildersActivity extends AppCompatActivity {
                     });
                     listWilders.setAdapter(adapter);
                 }
+                if (selection.matches("Sélectionner un language :")) {
+                    mWilderRef = mDatabase.getReference("User");
+                    mWilderRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            userModels.clear();
+                            for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()){
+                                UserModel userModel = wildersSnapshot.child("Profil").getValue(UserModel.class);
+                                userModels.add(userModel);
+
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                    listWilders.setAdapter(adapter);
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -114,5 +143,37 @@ public class WildersActivity extends AppCompatActivity {
             }
         });
 
+        ImageView ivStore = findViewById(R.id.iv_store);
+        ivStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(WildersActivity.this);
+                LayoutInflater li = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View mView = li.inflate(R.layout.store_dialog, null);
+                mBuilder.setView(mView);
+                final AlertDialog dialog = mBuilder.create();
+
+                //Interactions avec les boutons :
+                Button btnClose = mView.findViewById(R.id.btn_cancel_dialog);
+                btnClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+                ImageView googlePlay = mView.findViewById(R.id.iv_google_play_store);
+                googlePlay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String url = "https://play.google.com/store/apps/developer?id=Wild+Code+School";
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse(url));
+                        startActivity(i);
+                    }
+                });
+
+                dialog.show();
+            }
+        });
     }
 }

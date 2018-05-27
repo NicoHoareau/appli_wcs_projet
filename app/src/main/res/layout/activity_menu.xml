@@ -22,32 +22,35 @@
             <ImageView
                 android:id="@+id/iv_profile"
                 android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
+                android:layout_height="40dp"
+                android:layout_weight="1"
                 app:srcCompat="@drawable/logo_user2" />
 
             <ImageView
                 android:id="@+id/iv_allusers"
                 android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_weight="0.4"
-                app:srcCompat="@drawable/logo_friends" />
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:tint="@color/wcsColor"
+                app:srcCompat="@drawable/logo_friends"
+                app:tintMode="src_in" />
 
             <ImageView
                 android:id="@+id/img_icon"
                 android:layout_width="40dp"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_weight="3"
                 android:src="@drawable/logo_wcs" />
 
             <ImageView
                 android:id="@+id/btn_deco"
-                android:layout_width="30dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.5"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/ic_deconnection" />
+                android:layout_width="15dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:tint="@android:color/black"
+                app:srcCompat="@drawable/ic_deconnection"
+                app:tintMode="src_in" />
 
         </LinearLayout>
 

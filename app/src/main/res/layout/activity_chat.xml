@@ -50,13 +50,13 @@
 
     <EditText
         android:id="@+id/et_msg_person"
-        android:layout_width="286dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginBottom="13dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="24dp"
         android:ems="10"
         android:hint="@string/enter_msg"
         android:inputType="textPersonName"
