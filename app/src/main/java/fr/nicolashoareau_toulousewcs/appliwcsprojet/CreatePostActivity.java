@@ -103,9 +103,27 @@ public class CreatePostActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                     Uri downloadUri = taskSnapshot.getDownloadUrl();
-                                    String avatarUrl = downloadUri.toString();
-                                    ActualityModel actualityModel = new ActualityModel(mUid, textDescriptionPost, avatarUrl,dateLong);
-                                    mCreatePostRef.push().setValue(actualityModel);
+                                    final String avatarUrl = downloadUri.toString();
+
+                                    //todo : NAME
+                                    mDatabase = FirebaseDatabase.getInstance();
+                                    mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    DatabaseReference userRef = mDatabase.getReference("User").child(mUid).child("Profil");
+                                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                                            String pseudo =  userModel.getPseudo();
+                                            ActualityModel actualityModel = new ActualityModel(pseudo, textDescriptionPost, avatarUrl,dateLong);
+                                            mCreatePostRef.push().setValue(actualityModel);
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                        }
+                                    });
+
                                 }
                             });
                         }

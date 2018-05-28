@@ -47,26 +47,28 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
         String dateformat = sdf.format(actualityModel.getDatePost());
         tvDatePost.setText(dateformat);
 
-
         Glide.with(parent.getContext()).load(actualityModel.getUrlPhoto()).into(ivAddPhoto);
 
         tvDescription.setText(actualityModel.getDescription());
 
-        mDatabase = FirebaseDatabase.getInstance();
+        tvUsernameUser.setText(actualityModel.getUserId());
+        Glide.with(parent.getContext()).load(actualityModel.getUrlPhotoUser()).apply(RequestOptions.circleCropTransform()).into(ivUserPhoto);
+
+
+        /*mDatabase = FirebaseDatabase.getInstance();
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mRef = mDatabase.getReference("User").child(mUid).child("Profil");
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 UserModel userModel = dataSnapshot.getValue(UserModel.class);
-                tvUsernameUser.setText(userModel.getPseudo());
-                Glide.with(parent.getContext()).load(userModel.getProfilPic()).apply(RequestOptions.circleCropTransform()).into(ivUserPhoto);
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
-        });
+        });*/
 
 
 
