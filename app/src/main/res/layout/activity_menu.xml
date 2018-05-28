@@ -32,6 +32,16 @@
                 app:srcCompat="@drawable/logo_user2" />
 
             <ImageView
+                android:id="@+id/iv_allusers"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:tint="@color/wcsColor"
+                app:srcCompat="@drawable/logo_friends"
+                app:tintMode="src_in" />
+
+            <ImageView
                 android:id="@+id/img_icon"
                 android:layout_width="50dp"
                 android:layout_height="60dp"

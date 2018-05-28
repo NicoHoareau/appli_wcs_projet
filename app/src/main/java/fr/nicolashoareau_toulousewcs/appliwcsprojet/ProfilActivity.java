@@ -17,7 +17,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -35,6 +37,8 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class ProfilActivity extends AppCompatActivity {
@@ -50,6 +54,9 @@ public class ProfilActivity extends AppCompatActivity {
     private String mCurrentPhotoPath;
     private FirebaseAuth mAuth;
 
+    FirebaseDatabase mDatabase;
+    DatabaseReference mProfileRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +64,8 @@ public class ProfilActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mDatabase = FirebaseDatabase.getInstance();
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -96,6 +105,30 @@ public class ProfilActivity extends AppCompatActivity {
             }
         });
 
+        ListView listProfile = findViewById(R.id.listview_profile);
+        final ArrayList<ActualityModel> actualityModelArrayList = new ArrayList<>();
+        final ActualityAdapter adapter = new ActualityAdapter(ProfilActivity.this, actualityModelArrayList);
+        listProfile.setAdapter(adapter);
+        mProfileRef = mDatabase.getReference("Post");
+        mProfileRef.orderByChild("datePost").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                actualityModelArrayList.clear();
+                for (DataSnapshot listActualitySnapshot : dataSnapshot.getChildren()){
+                    ActualityModel actualityModel = listActualitySnapshot.getValue(ActualityModel.class);
+                    String idUserPost = actualityModel.getUserId();
+                    if (idUserPost.equals(mUid)){
+                        actualityModelArrayList.add(actualityModel);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+                Collections.reverse(actualityModelArrayList);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

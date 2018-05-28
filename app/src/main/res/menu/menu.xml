@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:title="Modifier mon nom"
+        android:title="@string/modif_pseudo"
         android:id="@+id/edit_name"
         app:showAsAction="never" />
 
     <item
-        android:title="Modifer ma photo"
+        android:title="@string/modif_photo"
         android:id="@+id/edit_pix"
         app:showAsAction="never" />
 
     <item
-        android:title="Deconnexion"
+        android:title="@string/deconnexion"
         android:id="@+id/disconnect"
         app:showAsAction="never" />
 </menu>

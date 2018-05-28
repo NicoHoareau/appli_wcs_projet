@@ -46,6 +46,15 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
             }
         });
 
+        ImageView allUsers = findViewById(R.id.iv_allusers);
+        allUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToWilders = new Intent(MenuActivity.this, WildersActivity.class);
+                startActivity(goToWilders);
+            }
+        });
+
 
 
         final ImageView profile = findViewById(R.id.iv_profile);

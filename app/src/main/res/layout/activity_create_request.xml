@@ -14,6 +14,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/indication_name_request"
         android:textColor="@android:color/black"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/tv_indic_name_request"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="..." />
@@ -34,7 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:text="Date"
+        android:text="@string/date"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_indic_name_request" />
@@ -46,7 +51,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="..."
+        android:hint="@string/hint"
         android:inputType="textPersonName"
         android:lines="3"
         android:maxLines="3"

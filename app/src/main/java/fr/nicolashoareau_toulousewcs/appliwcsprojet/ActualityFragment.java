@@ -128,7 +128,7 @@ public class ActualityFragment extends Fragment {
         });
 
         mActualityRef = mDatabase.getReference("Post");
-        mActualityRef.orderByChild("date").addValueEventListener(new ValueEventListener() {
+        mActualityRef.orderByChild("datePost").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 actualityModelArrayList.clear();
