@@ -113,7 +113,7 @@ public class CreatePostActivity extends AppCompatActivity {
                                         mDatabase = FirebaseDatabase.getInstance();
                                         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                         DatabaseReference userRef = mDatabase.getReference("User").child(mUid).child("Profil");
-                                        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        userRef.addValueEventListener(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(DataSnapshot dataSnapshot) {
                                                 UserModel userModel = dataSnapshot.getValue(UserModel.class);

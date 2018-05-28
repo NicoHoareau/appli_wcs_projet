@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/iv_photo_added"
-        android:layout_width="194dp"
+        android:layout_width="146dp"
         android:layout_height="133dp"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="8dp"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="@string/textview"
         android:textColor="@color/wcsColor"
         android:textSize="16sp"
@@ -56,7 +56,7 @@
         android:text="@string/textview"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_username_user"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv_photo_added"
         app:layout_constraintTop_toBottomOf="@+id/iv_userphoto" />

@@ -48,6 +48,7 @@ public class ProfilActivity extends AppCompatActivity {
 
     private String mUid;
     private DatabaseReference mPathID;
+    private DatabaseReference mPostID;
     private Uri mFileUri = null;
     private String mGetImageUrl = "";
     private ImageView mProfilPix;
@@ -71,6 +72,7 @@ public class ProfilActivity extends AppCompatActivity {
 
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mPathID = FirebaseDatabase.getInstance().getReference("User").child(mUid);
+        mPostID = FirebaseDatabase.getInstance().getReference("Post");
 
         mPathID.addValueEventListener(new ValueEventListener() {
             @Override
@@ -169,7 +171,7 @@ public class ProfilActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (input.getText() != null) {
-                            String pseudo = input.getText().toString();
+                            final String pseudo = input.getText().toString();
                             mPathID.child("Profil").child("pseudo").setValue(pseudo);
                         }
                     }

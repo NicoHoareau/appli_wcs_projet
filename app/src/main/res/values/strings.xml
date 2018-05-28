@@ -53,6 +53,7 @@
     <string name="wild_store">Wild Store</string>
     <string name="advert_description">Veuillez entrer une description s\'il vous plaît !</string>
     <string name="no_image">Aucune image n\'a été sélectionnée</string>
+    <string name="modify_post">Modifier ce post</string>
 
     <string-array name="spinnerLanguage">
         <item>Sélectionner un language :</item>
