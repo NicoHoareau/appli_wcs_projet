@@ -52,25 +52,8 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
         tvDescription.setText(actualityModel.getDescription());
 
         tvUsernameUser.setText(actualityModel.getUserId());
+
         Glide.with(parent.getContext()).load(actualityModel.getUrlPhotoUser()).apply(RequestOptions.circleCropTransform()).into(ivUserPhoto);
-
-
-        /*mDatabase = FirebaseDatabase.getInstance();
-        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mRef = mDatabase.getReference("User").child(mUid).child("Profil");
-        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                UserModel userModel = dataSnapshot.getValue(UserModel.class);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });*/
-
-
 
         return convertView;
     }

@@ -20,14 +20,6 @@ public class ActualityModel {
     }
 
 
-    public ActualityModel(String userId, String description, String urlPhoto, long datePost) {
-        this.userId = userId;
-        this.description = description;
-        this.urlPhoto = urlPhoto;
-        this.datePost = datePost;
-    }
-
-
 
     public String getUserId() {
         return userId;

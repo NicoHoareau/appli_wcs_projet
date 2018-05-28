@@ -114,7 +114,8 @@ public class CreatePostActivity extends AppCompatActivity {
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             UserModel userModel = dataSnapshot.getValue(UserModel.class);
                                             String pseudo =  userModel.getPseudo();
-                                            ActualityModel actualityModel = new ActualityModel(pseudo, textDescriptionPost, avatarUrl,dateLong);
+                                            String urlPhotoUser = userModel.getProfilPic();
+                                            ActualityModel actualityModel = new ActualityModel(pseudo, textDescriptionPost, avatarUrl, urlPhotoUser, dateLong);
                                             mCreatePostRef.push().setValue(actualityModel);
 
                                         }
