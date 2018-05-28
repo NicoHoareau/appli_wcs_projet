@@ -119,7 +119,7 @@ public class CreatePostActivity extends AppCompatActivity {
                                                 UserModel userModel = dataSnapshot.getValue(UserModel.class);
                                                 String pseudo =  userModel.getPseudo();
                                                 String urlPhotoUser = userModel.getProfilPic();
-                                                ActualityModel actualityModel = new ActualityModel(pseudo, textDescriptionPost, avatarUrl, urlPhotoUser, dateLong);
+                                                ActualityModel actualityModel = new ActualityModel(pseudo, textDescriptionPost, avatarUrl, urlPhotoUser, dateLong, mUid);
                                                 mCreatePostRef.push().setValue(actualityModel);
 
                                             }

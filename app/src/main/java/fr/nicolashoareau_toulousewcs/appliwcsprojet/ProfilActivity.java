@@ -116,10 +116,10 @@ public class ProfilActivity extends AppCompatActivity {
                 actualityModelArrayList.clear();
                 for (DataSnapshot listActualitySnapshot : dataSnapshot.getChildren()){
                     ActualityModel actualityModel = listActualitySnapshot.getValue(ActualityModel.class);
-                    String idUserPost = actualityModel.getUserId();
+                    /*String idUserPost = actualityModel.getPseudoUser();
                     if (idUserPost.equals(mUid)){
                         actualityModelArrayList.add(actualityModel);
-                    }
+                    }*/
                 }
                 adapter.notifyDataSetChanged();
                 Collections.reverse(actualityModelArrayList);

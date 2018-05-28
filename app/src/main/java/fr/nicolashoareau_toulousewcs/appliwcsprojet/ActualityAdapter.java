@@ -51,7 +51,7 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
 
         tvDescription.setText(actualityModel.getDescription());
 
-        tvUsernameUser.setText(actualityModel.getUserId());
+        tvUsernameUser.setText(actualityModel.getPseudoUser());
 
         Glide.with(parent.getContext()).load(actualityModel.getUrlPhotoUser()).apply(RequestOptions.circleCropTransform()).into(ivUserPhoto);
 
