@@ -197,10 +197,10 @@ public class ProfilActivity extends AppCompatActivity {
 
                             if (photoFile != null) {
                                 mFileUri = FileProvider.getUriForFile(ProfilActivity.this,
-                                        "fr.nicolashoareau_toulousewcs.appliwcsprojet",
+                                        "fr.nicolashoareau_toulousewcs.appliwcsprojet.fileprovider",
                                         photoFile);
                                 intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
-                                startActivity(intent);
+                                startActivityForResult(intent, APP_PHOTO);
                             }
                         }
                     }
@@ -238,8 +238,8 @@ public class ProfilActivity extends AppCompatActivity {
                 try {
                     if (resultCode == RESULT_OK) {
                         mGetImageUrl = mFileUri.getPath();
-                        saveCaptureImage();
                     }
+                    saveCaptureImage();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
