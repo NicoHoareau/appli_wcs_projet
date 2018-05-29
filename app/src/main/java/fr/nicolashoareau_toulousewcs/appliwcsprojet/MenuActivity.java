@@ -62,7 +62,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
         mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference pathID = mDatabase.getReference("User").child(uid);
 
-        pathID.addListenerForSingleValueEvent(new ValueEventListener() {
+        pathID.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
