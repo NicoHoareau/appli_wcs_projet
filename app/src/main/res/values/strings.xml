@@ -60,5 +60,13 @@
         <item>Java</item>
         <item>Javascript</item>
     </string-array>
+    <string name="enter_pseudo">Entre ton pseudo</string>
+    <string name="java_android">Java/Android</string>
+    <string name="js_react">JS/React</string>
+    <string name="promotion">Promotion :</string>
+    <string name="fev">Fev</string>
+    <string name="sept">Sept</string>
+    <string name="annee">Année</string>
+    <string name="valider">Valider</string>
 
 </resources>
