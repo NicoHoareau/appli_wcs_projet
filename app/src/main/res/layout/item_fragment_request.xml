@@ -64,7 +64,7 @@
             android:layout_width="20dp"
             android:layout_height="32dp"
             android:layout_marginBottom="8dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/edit" />
@@ -81,6 +81,7 @@
             android:id="@+id/iv_remove_request"
             android:layout_width="20dp"
             android:layout_height="32dp"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/delete" />
 
