@@ -91,13 +91,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                             tvDateRq.setText(date);
 
                             final ImageView editRq = view.findViewById(R.id.edit_req);
-                            editRq.setVisibility(View.INVISIBLE);
                             final EditText etEditDesc = view.findViewById(R.id.et_edit_desc);
-                            etEditDesc.setVisibility(View.INVISIBLE);
-
-                            String uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                            if (requestModel.getIdUser().equals(uId)) {
-                            editRq.setVisibility(View.VISIBLE);
                             editRq.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -116,10 +110,8 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                                                     rqRef.child("description").setValue(newDesc);
                                                     etEditDesc.setText(newDesc);
                                                 }
-
                                                 @Override
                                                 public void onCancelled(DatabaseError databaseError) {
-
                                                 }
                                             });
                                             etEditDesc.setVisibility(View.INVISIBLE);
@@ -128,22 +120,15 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                                     });
                                 }
                             });
-                            }
                         }
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
                 dialog.show();
             }
         });
-
-
-
-
 
         btnRqOK.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,16 +140,12 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                             mRef.child(requestModel.getIdRequest()).child("validated").setValue(true);
                         }
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
             }
         });
-
-
 
         ImageView removeRequest = convertView.findViewById(R.id.iv_remove_request);
         removeRequest.setOnClickListener(new View.OnClickListener() {
