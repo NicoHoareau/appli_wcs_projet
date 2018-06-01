@@ -1,41 +1,26 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
 public class ActualityModel {
-    private String userId;
+    private String pseudoUser;
     private String description;
     private String urlPhoto;
     private String urlPhotoUser;
     private long datePost;
+    private String idUser;
 
     public ActualityModel(){
 
     }
 
-    public ActualityModel(String userId, String description, String urlPhoto, String urlPhotoUser, long datePost) {
-        this.userId = userId;
+    public ActualityModel(String pseudoUser, String description, String urlPhoto, String urlPhotoUser, long datePost, String idUser) {
         this.description = description;
         this.urlPhoto = urlPhoto;
         this.urlPhotoUser = urlPhotoUser;
         this.datePost = datePost;
+        this.pseudoUser = pseudoUser;
+        this.idUser = idUser;
     }
 
-
-    public ActualityModel(String userId, String description, String urlPhoto, long datePost) {
-        this.userId = userId;
-        this.description = description;
-        this.urlPhoto = urlPhoto;
-        this.datePost = datePost;
-    }
-
-
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getDescription() {
         return description;
@@ -67,5 +52,21 @@ public class ActualityModel {
 
     public void setDatePost(long datePost) {
         this.datePost = datePost;
+    }
+
+    public void setPseudoUser(String pseudoUser) {
+        this.pseudoUser = pseudoUser;
+    }
+
+    public String getPseudoUser() {
+        return pseudoUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getIdUser() {
+        return idUser;
     }
 }

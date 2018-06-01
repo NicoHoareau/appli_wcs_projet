@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -93,30 +94,58 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String textDescriptionPost = etDescriptionPost.getText().toString();
-                mCreatePostRef = mDatabase.getReference("Post");
-                mCreatePostRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (!mGetImageUrl.equals("") && mGetImageUrl != null) {
-                            StorageReference avatarRef = FirebaseStorage.getInstance().getReference("PhotoPost");
-                            avatarRef.putFile(mFileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    Uri downloadUri = taskSnapshot.getDownloadUrl();
-                                    String avatarUrl = downloadUri.toString();
-                                    ActualityModel actualityModel = new ActualityModel(mUid, textDescriptionPost, avatarUrl,dateLong);
-                                    mCreatePostRef.push().setValue(actualityModel);
-                                }
-                            });
-                        }
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                if (textDescriptionPost.isEmpty()){
+                    Toast.makeText(CreatePostActivity.this, R.string.advert_description, Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    mCreatePostRef = mDatabase.getReference("Post");
+                    mCreatePostRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (!mGetImageUrl.equals("") && mGetImageUrl != null) {
+                                StorageReference avatarRef = FirebaseStorage.getInstance().getReference("PhotoPost");
+                                avatarRef.putFile(mFileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                    @Override
+                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                        Uri downloadUri = taskSnapshot.getDownloadUrl();
+                                        final String avatarUrl = downloadUri.toString();
 
-                    }
-                });
-                Intent intent = new Intent(CreatePostActivity.this, MenuActivity.class);
-                startActivity(intent);
+                                        mDatabase = FirebaseDatabase.getInstance();
+                                        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                        DatabaseReference userRef = mDatabase.getReference("User").child(mUid).child("Profil");
+                                        userRef.addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                                UserModel userModel = dataSnapshot.getValue(UserModel.class);
+                                                String pseudo =  userModel.getPseudo();
+                                                String urlPhotoUser = userModel.getProfilPic();
+                                                ActualityModel actualityModel = new ActualityModel(pseudo, textDescriptionPost, avatarUrl, urlPhotoUser, dateLong, mUid);
+                                                mCreatePostRef.push().setValue(actualityModel);
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(DatabaseError databaseError) {
+                                            }
+                                        });
+
+                                    }
+                                });
+                                Intent intent = new Intent(CreatePostActivity.this, MenuActivity.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Toast.makeText(CreatePostActivity.this, R.string.no_image, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
+
 
             }
         });

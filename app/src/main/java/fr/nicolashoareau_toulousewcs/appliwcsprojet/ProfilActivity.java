@@ -48,6 +48,7 @@ public class ProfilActivity extends AppCompatActivity {
 
     private String mUid;
     private DatabaseReference mPathID;
+    private DatabaseReference mPostID;
     private Uri mFileUri = null;
     private String mGetImageUrl = "";
     private ImageView mProfilPix;
@@ -71,6 +72,7 @@ public class ProfilActivity extends AppCompatActivity {
 
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mPathID = FirebaseDatabase.getInstance().getReference("User").child(mUid);
+        mPostID = FirebaseDatabase.getInstance().getReference("Post");
 
         mPathID.addValueEventListener(new ValueEventListener() {
             @Override
@@ -116,7 +118,7 @@ public class ProfilActivity extends AppCompatActivity {
                 actualityModelArrayList.clear();
                 for (DataSnapshot listActualitySnapshot : dataSnapshot.getChildren()){
                     ActualityModel actualityModel = listActualitySnapshot.getValue(ActualityModel.class);
-                    String idUserPost = actualityModel.getUserId();
+                    String idUserPost = actualityModel.getIdUser();
                     if (idUserPost.equals(mUid)){
                         actualityModelArrayList.add(actualityModel);
                     }
@@ -169,8 +171,29 @@ public class ProfilActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (input.getText() != null) {
-                            String pseudo = input.getText().toString();
+                            final String pseudo = input.getText().toString();
                             mPathID.child("Profil").child("pseudo").setValue(pseudo);
+
+                            //on cherche dans post, classé par idUser = mUid
+                            final DatabaseReference postRef = mDatabase.getReference("Post");
+                            postRef.orderByChild("idUser").equalTo(mUid).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot post : dataSnapshot.getChildren()){//pour chaque enfant
+                                        ActualityModel actualityModel = post.getValue(ActualityModel.class);
+                                        actualityModel.setPseudoUser(pseudo);//on créé un nouveau de la nouvelle valeur modif
+                                        postRef.child(post.getKey()).setValue(actualityModel);//on réinjecte le model modifié pour la clé correspondante
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+
                         }
                     }
                 })
@@ -195,10 +218,10 @@ public class ProfilActivity extends AppCompatActivity {
 
                             if (photoFile != null) {
                                 mFileUri = FileProvider.getUriForFile(ProfilActivity.this,
-                                        "fr.nicolashoareau_toulousewcs.appliwcsprojet",
+                                        "fr.nicolashoareau_toulousewcs.appliwcsprojet.fileprovider",
                                         photoFile);
                                 intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
-                                startActivity(intent);
+                                startActivityForResult(intent, APP_PHOTO);
                             }
                         }
                     }
@@ -236,8 +259,8 @@ public class ProfilActivity extends AppCompatActivity {
                 try {
                     if (resultCode == RESULT_OK) {
                         mGetImageUrl = mFileUri.getPath();
-                        saveCaptureImage();
                     }
+                    saveCaptureImage();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -262,9 +285,27 @@ public class ProfilActivity extends AppCompatActivity {
             ref.putFile(mFileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Uri downloadUri = taskSnapshot.getDownloadUrl();
+                    final Uri downloadUri = taskSnapshot.getDownloadUrl();
                     FirebaseDatabase.getInstance().getReference("User")
                             .child(mUid).child("Profil").child("profilPic").setValue(downloadUri.toString());
+
+                    final DatabaseReference postRef = mDatabase.getReference("Post");
+                    postRef.orderByChild("idUser").equalTo(mUid).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot post : dataSnapshot.getChildren()){
+                                ActualityModel actualityModel = post.getValue(ActualityModel.class);
+                                actualityModel.setUrlPhotoUser(downloadUri.toString());
+                                postRef.child(post.getKey()).setValue(actualityModel);
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             });
         }

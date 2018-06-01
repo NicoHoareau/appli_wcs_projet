@@ -13,22 +13,17 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center_vertical">
+            android:layout_marginBottom="10dp">
 
             <ImageView
                 android:id="@+id/iv_profile"
-                android:layout_width="50dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
                 app:srcCompat="@drawable/logo_user2" />
 
             <ImageView
@@ -43,31 +38,21 @@
 
             <ImageView
                 android:id="@+id/img_icon"
-                android:layout_width="50dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/logo_wcs"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:src="@drawable/logo_wcs" />
 
             <ImageView
                 android:id="@+id/btn_deco"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/ic_deconnection"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/img_icon" />
+                android:layout_width="15dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:tint="#21b2a3"
+                app:srcCompat="@drawable/ic_deconnection"
+                app:tintMode="src_in" />
 
-        </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
 
 
         <android.support.design.widget.TabLayout
@@ -77,8 +62,8 @@
             android:background="#FBA858"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:tabIndicatorColor="@android:color/black"
-            app:tabSelectedTextColor="@android:color/black"
+            app:tabIndicatorColor="#21b2a3"
+            app:tabSelectedTextColor="#21b2a3"
             app:tabTextColor="@android:color/white">
 
         </android.support.design.widget.TabLayout>

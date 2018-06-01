@@ -1,13 +1,16 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
 import android.content.Context;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -20,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
 
@@ -47,27 +51,13 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
         String dateformat = sdf.format(actualityModel.getDatePost());
         tvDatePost.setText(dateformat);
 
-
         Glide.with(parent.getContext()).load(actualityModel.getUrlPhoto()).into(ivAddPhoto);
 
         tvDescription.setText(actualityModel.getDescription());
 
-        mDatabase = FirebaseDatabase.getInstance();
-        mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mRef = mDatabase.getReference("User").child(mUid).child("Profil");
-        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                UserModel userModel = dataSnapshot.getValue(UserModel.class);
-                tvUsernameUser.setText(userModel.getPseudo());
-                Glide.with(parent.getContext()).load(userModel.getProfilPic()).apply(RequestOptions.circleCropTransform()).into(ivUserPhoto);
-            }
+        tvUsernameUser.setText(actualityModel.getPseudoUser());
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
+        Glide.with(parent.getContext()).load(actualityModel.getUrlPhotoUser()).apply(RequestOptions.circleCropTransform()).into(ivUserPhoto);
 
 
         return convertView;
