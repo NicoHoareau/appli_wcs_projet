@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +30,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -58,7 +56,7 @@ public class CreatePostActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        mAddPhoto = findViewById(R.id.iv_add_photo);
+        mAddPhoto = findViewById(R.id.iv_modify_photo);
         mAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,9 +78,9 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
-        final EditText etDescriptionPost = findViewById(R.id.et_desc_post);
+        final EditText etDescriptionPost = findViewById(R.id.et_modify_desc);
 
-        TextView dateText = findViewById(R.id.tv_date_post);
+        TextView dateText = findViewById(R.id.tv_modif_date);
         final Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         String date = formatter.format(currentTime);

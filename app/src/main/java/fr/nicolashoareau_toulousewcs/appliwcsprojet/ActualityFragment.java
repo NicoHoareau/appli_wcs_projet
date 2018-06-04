@@ -1,6 +1,8 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -113,7 +116,7 @@ public class ActualityFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance();
 
-        ListView listActuality = getView().findViewById(R.id.list_actuality);
+        final ListView listActuality = getView().findViewById(R.id.list_actuality);
         final ArrayList<ActualityModel> actualityModelArrayList = new ArrayList<>();
         final ActualityAdapter adapter = new ActualityAdapter(getContext(), actualityModelArrayList);
         listActuality.setAdapter(adapter);
@@ -145,6 +148,7 @@ public class ActualityFragment extends Fragment {
 
             }
         });
+
 
 
 
