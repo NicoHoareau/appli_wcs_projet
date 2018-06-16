@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Appli WCS Projet</string>
+    <string name="app_name">Wilders in Wild Code School</string>
     <string name="text_forget_mdp">Mot de passe oublié ?</string>
     <string name="text_pseudo_login">Pseudo</string>
     <string name="password">Mot de passe</string>
@@ -16,7 +16,6 @@
     <string name="mdp_envoye">Mot de passe envoyé</string>
     <string name="email_inconnu">Email inconnu</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="name_tab1">Requêtes en cours</string>
     <string name="name_tab2">Anciennes requêtes</string>
     <string name="name_tab3">Wild News</string>
@@ -68,5 +67,9 @@
     <string name="sept">Sept</string>
     <string name="annee">Année</string>
     <string name="valider">Valider</string>
+    <string name="splash_text1">Créer des reqûetes, modifier et valider-les</string>
+    <string name="splash_text2">Suivez le fil d\'actualité de la Wild Code School avec Wild News !</string>
+    <string name="splash_text3">Personnaliser votre profil et visionner celui de vos amis wilders dans le Wild Club</string>
+    <string name="splash_text4">Discuter avec tous les wilders via le Wild Chat :D</string>
 
 </resources>
