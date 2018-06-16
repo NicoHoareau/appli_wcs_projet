@@ -133,7 +133,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         btnRqOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                mRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {

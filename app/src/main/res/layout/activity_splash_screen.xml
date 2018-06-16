@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.SplashScreenActivity">
+    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.SplashScreenActivity"
+    android:background="#FFF">
 
     <TextView
         android:id="@+id/tv_splash_app"
@@ -16,101 +17,142 @@
         android:gravity="center_horizontal"
         android:text="@string/splash_text"
         android:textColor="@color/wcsColor"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_wcs_projet" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:id="@+id/iv_logo_wcs_projet"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_wcs" />
+        app:srcCompat="@drawable/cerf" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+    <TextView
+        android:id="@+id/text_splash_request"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@string/splash_text1"
+        android:textColor="@color/wcsColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/text_splash_actuality"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_splash_app">
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_create_request" />
 
-        <TextView
-            android:id="@+id/text_splash_request"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Créer des reqûetes, modifier et valider-les"
-            android:textColor="@color/wcsColor"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_splash_app" />
+    <ImageView
+        android:id="@+id/iv_logo_create_request"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_splash_app"
+        app:layout_constraintTop_toBottomOf="@+id/tv_splash_app"
+        app:srcCompat="@drawable/create_request" />
 
-        <TextView
-            android:id="@+id/text_splash_actuality"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Suivez le fil d'actualité de la Wild Code School avec Wild News!"
-            android:textColor="@color/wcsColor"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_splash_app" />
+    <ImageView
+        android:id="@+id/iv_logo_news"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginRight="75dp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_splash_app"
+        app:layout_constraintTop_toBottomOf="@+id/tv_splash_app"
+        app:srcCompat="@drawable/news" />
 
-        <TextView
-            android:id="@+id/text_splash_wildclub"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Personnaliser votre profil et visionner ceux de vos amis wilders dans le Wild Club"
-            android:textColor="@color/wcsColor"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_splash_app" />
+    <TextView
+        android:id="@+id/text_splash_actuality"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@string/splash_text2"
+        android:textColor="@color/wcsColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_splash_request"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_news" />
 
-        <TextView
-            android:id="@+id/text_splash_wildchat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:text="Et ne manquer de discuter avec tous les wilders via le Wild Chat :D"
-            android:textColor="@color/wcsColor"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_splash_app" />
+    <TextView
+        android:id="@+id/text_splash_wildclub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@string/splash_text3"
+        android:textColor="@color/wcsColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_splash_wildchat"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_chat2" />
 
-    </LinearLayout>
+    <TextView
+        android:id="@+id/text_splash_wildchat"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@string/splash_text4"
+        android:textColor="@color/wcsColor"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/text_splash_wildclub"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo_chat" />
+
+    <ImageView
+        android:id="@+id/iv_logo_chat"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="@+id/text_splash_request"
+        app:layout_constraintTop_toBottomOf="@+id/text_splash_actuality"
+        app:srcCompat="@drawable/chat" />
+
+    <ImageView
+        android:id="@+id/iv_logo_chat2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="@+id/text_splash_actuality"
+        app:layout_constraintTop_toBottomOf="@+id/text_splash_actuality"
+        app:srcCompat="@drawable/profil" />
+
 
 </android.support.constraint.ConstraintLayout>
