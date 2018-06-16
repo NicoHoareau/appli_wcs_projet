@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.MenuActivity"
+    android:id="@+id/drawer_profile">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/logo_user2" />
+
+            <ImageView
+                android:id="@+id/iv_allusers"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:tint="@color/wcsColor"
+                app:srcCompat="@drawable/logo_friends"
+                app:tintMode="src_in" />
+
+            <ImageView
+                android:id="@+id/img_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="3"
+                android:src="@drawable/logo_wcs" />
+
+            <ImageView
+                android:id="@+id/btn_deco"
+                android:layout_width="15dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:tint="#21b2a3"
+                app:srcCompat="@drawable/ic_deconnection"
+                app:tintMode="src_in" />
+
+        </LinearLayout>
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="#FBA858"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:tabIndicatorColor="#21b2a3"
+            app:tabSelectedTextColor="#21b2a3"
+            app:tabTextColor="@android:color/white">
+
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent">
+
+        </android.support.v4.view.ViewPager>
+
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.DrawerLayout>
+

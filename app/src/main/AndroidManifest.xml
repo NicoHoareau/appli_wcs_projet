@@ -2,20 +2,52 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.nicolashoareau_toulousewcs.appliwcsprojet">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_wcs_app"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon_wcs_app_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="fr.nicolashoareau_toulousewcs.appliwcsprojet.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ConnexionActivity" />
+        <activity android:name=".InscriptionActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".CreateRequestActivity" />
+        <activity android:name=".ProfilActivity" />
+        <activity
+            android:name=".OubliePassword"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CreateProfilActivity" />
+        <activity android:name=".CreatePostActivity" />
+        <activity android:name=".ChatActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".WildersActivity"></activity>
     </application>
 
 </manifest>
