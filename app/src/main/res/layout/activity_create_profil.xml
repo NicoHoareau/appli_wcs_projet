@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateProfilActivity">
+    tools:context=".CreateProfilActivity" android:background="#FFF">
 
     <ImageView
         android:id="@+id/iv_profil_pic"
@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wcsnb" />
+        app:srcCompat="@drawable/cerf_nb" />
 
     <LinearLayout
         android:id="@+id/choice_pic"

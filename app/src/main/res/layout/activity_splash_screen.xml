@@ -4,8 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.SplashScreenActivity"
+    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.FirstScreenActivity"
     android:background="#FFF">
+
+    <ImageView
+        android:id="@+id/iv_logo_wcs_projet"
+        android:layout_width="197dp"
+        android:layout_height="192dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cerf" />
 
     <TextView
         android:id="@+id/tv_splash_app"
@@ -13,7 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:text="@string/splash_text"
         android:textColor="@color/wcsColor"
@@ -22,20 +35,6 @@
         app:layout_constraintHorizontal_bias="0.416"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_logo_wcs_projet" />
-
-    <ImageView
-        android:id="@+id/iv_logo_wcs_projet"
-        android:layout_width="175dp"
-        android:layout_height="175dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cerf" />
 
 
     <TextView
@@ -147,12 +146,27 @@
         android:id="@+id/iv_logo_chat2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginStart="75dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginRight="75dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/text_splash_actuality"
+        app:layout_constraintEnd_toEndOf="@+id/text_splash_actuality"
         app:layout_constraintTop_toBottomOf="@+id/text_splash_actuality"
         app:srcCompat="@drawable/profil" />
+
+    <ImageView
+        android:id="@+id/iv_clear"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_logo_wcs_projet"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clear" />
 
 
 </android.support.constraint.ConstraintLayout>

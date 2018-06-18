@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreatePostActivity">
+    tools:context=".CreatePostActivity" android:background="#FFF">
 
     <ImageView
         android:id="@+id/iv_modify_photo"
@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_modif_date"
-        app:srcCompat="@drawable/wcsnb" />
+        app:srcCompat="@drawable/cerf_nb" />
 
     <EditText
         android:id="@+id/et_modify_desc"
