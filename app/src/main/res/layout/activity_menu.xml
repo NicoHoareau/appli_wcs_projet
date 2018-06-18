@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.MenuActivity"
-    android:id="@+id/drawer_profile">
+    android:id="@+id/drawer_profile" android:background="#FFF">
 
 
     <LinearLayout
@@ -38,10 +38,11 @@
 
             <ImageView
                 android:id="@+id/img_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
                 android:layout_weight="3"
-                android:src="@drawable/logo_wcs" />
+                android:scaleType="fitCenter"
+                android:src="@drawable/cerf" />
 
             <ImageView
                 android:id="@+id/btn_deco"

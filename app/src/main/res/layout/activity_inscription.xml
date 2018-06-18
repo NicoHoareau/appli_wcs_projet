@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.InscriptionActivity">
+    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.InscriptionActivity"
+    android:background="#FFF">
 
     <EditText
         android:id="@+id/et_email"
@@ -88,7 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_wcs" />
+        app:srcCompat="@drawable/cerf" />
 
     <TextView
         android:id="@+id/msg_error"
