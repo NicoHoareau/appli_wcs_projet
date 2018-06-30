@@ -61,6 +61,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         final ImageView btnEdit = convertView.findViewById(R.id.iv_modify_request);
 
         mDatabase = FirebaseDatabase.getInstance();
+        mRef = mDatabase.getReference("Request");
 
 
         btnEdit.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +77,6 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                 final TextView tvDateRq = view.findViewById(R.id.tv_date_dialog);
                 final TextView tvDescRq = view.findViewById(R.id.tv_desc_dialog);
 
-                mRef = mDatabase.getReference("Request");
                 mRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

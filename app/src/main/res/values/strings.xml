@@ -7,11 +7,11 @@
     <string name="inscription">Inscription</string>
     <string name="email">Email</string>
     <string name="deja_inscrit">Déjà inscrit ?</string>
-    <string name="entrer_email">Veuillez entrer une adresse mail</string>
+    <string name="entrer_email">Veuillez entrer une adresse email</string>
     <string name="entrer_password">Veuillez entrer un mot de passe</string>
     <string name="password_trop_court">Le mot de passe doit contenir au moins 6 caractères</string>
     <string name="echec_inscription">Echec de l\'inscription</string>
-    <string name="envoie_nouveau_mot_de_passe">Envoie d\'un nouveau mot de passe</string>
+    <string name="envoie_nouveau_mot_de_passe">Envoi d\'un nouveau mot de passe</string>
     <string name="retour">Retour</string>
     <string name="mdp_envoye">Mot de passe envoyé</string>
     <string name="email_inconnu">Email inconnu</string>
@@ -60,14 +60,14 @@
         <item>Javascript</item>
     </string-array>
     <string name="enter_pseudo">Entre ton pseudo</string>
-    <string name="java_android">Java/Android</string>
-    <string name="js_react">JS/React</string>
+    <string name="java_android">Java / Android / JEE</string>
+    <string name="js_react">JavaScript / React</string>
     <string name="promotion">Promotion :</string>
-    <string name="fev">Fev</string>
-    <string name="sept">Sept</string>
+    <string name="fev">Février</string>
+    <string name="sept">Septembre</string>
     <string name="annee">Année</string>
     <string name="valider">Valider</string>
-    <string name="splash_text1">Créer des reqûetes, modifier et valider-les</string>
+    <string name="splash_text1">Créer, modifier et valider des requêtes</string>
     <string name="splash_text2">Suivez le fil d\'actualité de la Wild Code School avec Wild News !</string>
     <string name="splash_text3">Personnaliser votre profil et visionner celui de vos amis wilders dans le Wild Club</string>
     <string name="splash_text4">Discuter avec tous les wilders via le Wild Chat :D</string>
