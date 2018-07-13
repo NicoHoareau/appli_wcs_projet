@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'wilders'
+            keyPassword 'Yrq3W5DMBKcj6m3H'
+            storeFile file('keystore.jks')
+            storePassword 'WbW7g4NTfZdEa2Jt'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
         applicationId "fr.nicolashoareau_toulousewcs.appliwcsprojet"
@@ -9,6 +17,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
@@ -16,10 +25,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:support-v4:26.1.0'
@@ -32,11 +43,9 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.github.bumptech.glide:glide:4.3.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
-
     //library
     implementation 'com.firebaseui:firebase-ui-database:1.0.1'
     implementation 'com.firebase:firebase-client-android:2.4.1+'
-
 }
 
 apply plugin: 'com.google.gms.google-services'
