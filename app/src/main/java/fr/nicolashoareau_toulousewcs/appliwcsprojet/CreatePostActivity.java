@@ -61,7 +61,7 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(CreatePostActivity.this);
-                builder.setTitle("aaa").setMessage("aaaa")
+                builder.setTitle(R.string.add_new_pic)
                         .setPositiveButton("camera", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
