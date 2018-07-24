@@ -23,11 +23,11 @@ public class ValidatedAdapter extends ArrayAdapter<RequestModel> {
         }
         RequestModel requestModel = getItem(position);
 
-        TextView tvIdRequestValidated = convertView.findViewById(R.id.tv_id_request_validated);
+        //TextView tvIdRequestValidated = convertView.findViewById(R.id.tv_id_request_validated);
         TextView tvDateRequestValidated = convertView.findViewById(R.id.tv_date_validated_request);
         TextView tvDescriptionValidated = convertView.findViewById(R.id.tv_description_validated_request);
 
-        tvIdRequestValidated.setText(requestModel.getIdRequest());
+        //tvIdRequestValidated.setText(requestModel.getIdRequest());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dateformat = sdf.format(requestModel.getDate());
         tvDateRequestValidated.setText(dateformat);
