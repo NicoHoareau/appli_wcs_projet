@@ -36,7 +36,7 @@ public class CreateProfilActivity extends AppCompatActivity {
     private String mLanguage;
     private String mLink;
     private RadioButton mFevrier;
-    private RadioButton septembre;
+    private RadioButton mSeptembre;
     private EditText mEditAnnee;
     private String mPromo;
     private String mUrlSave;
@@ -60,7 +60,7 @@ public class CreateProfilActivity extends AppCompatActivity {
         mJava = findViewById(R.id.radiobutton_java);
         mJs = findViewById(R.id.radiobutton_js);
         mFevrier = findViewById(R.id.radiobutton_fev);
-        septembre = findViewById(R.id.radiobutton_sept);
+        mSeptembre = findViewById(R.id.radiobutton_sept);
         mEditAnnee = findViewById(R.id.et_year);
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
@@ -85,6 +85,7 @@ public class CreateProfilActivity extends AppCompatActivity {
                     mEditPseudo.setText(pseudo);
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -117,9 +118,20 @@ public class CreateProfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String firstName = mEditPseudo.getText().toString();
+                String year = mEditAnnee.getText().toString();
                 if (firstName.isEmpty()) {
                     Toast.makeText(CreateProfilActivity.this, "Entrez un pseudo", Toast.LENGTH_SHORT).show();
-                } else {
+                }
+                else if (!mJs.isChecked() && !mJava.isChecked()){
+                    Toast.makeText(CreateProfilActivity.this, "Cochez un langage", Toast.LENGTH_SHORT).show();
+                }
+                else if (!mFevrier.isChecked() && !mSeptembre.isChecked()) {
+                    Toast.makeText(CreateProfilActivity.this, "Cochez une promotion", Toast.LENGTH_SHORT).show();
+                }
+                else if (year.isEmpty()) {
+                    Toast.makeText(CreateProfilActivity.this, "Entrez une année de promotion", Toast.LENGTH_SHORT).show();
+                }
+                else {
                     saveUserModel();
 
                     Intent intentHome = new Intent(CreateProfilActivity.this, MenuActivity.class);
@@ -147,9 +159,9 @@ public class CreateProfilActivity extends AppCompatActivity {
                 }
                 String annee = mEditAnnee.getText().toString();
                 if (mFevrier.isChecked()) {
-                    septembre.setChecked(false);
+                    mSeptembre.setChecked(false);
                     mPromo = "Février " + annee;
-                } else if (septembre.isChecked()) {
+                } else if (mSeptembre.isChecked()) {
                     mFevrier.setChecked(false);
                     mPromo = "Septembre " + annee;
                 }
@@ -168,9 +180,9 @@ public class CreateProfilActivity extends AppCompatActivity {
                 }
                 String annee = mEditAnnee.getText().toString();
                 if (mFevrier.isChecked()) {
-                    septembre.setChecked(false);
+                    mSeptembre.setChecked(false);
                     mPromo = "Février " + annee;
-                } else if (septembre.isChecked()) {
+                } else if (mSeptembre.isChecked()) {
                     mFevrier.setChecked(false);
                     mPromo = "Septembre " + annee;
                 }
@@ -195,9 +207,9 @@ public class CreateProfilActivity extends AppCompatActivity {
                     }
                     String annee = mEditAnnee.getText().toString();
                     if (mFevrier.isChecked()) {
-                        septembre.setChecked(false);
+                        mSeptembre.setChecked(false);
                         mPromo = "Février " + annee;
-                    } else if (septembre.isChecked()) {
+                    } else if (mSeptembre.isChecked()) {
                         mFevrier.setChecked(false);
                         mPromo = "Septembre " + annee;
                     }

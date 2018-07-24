@@ -173,7 +173,7 @@ public class ProfilActivity extends AppCompatActivity {
 
                                             String oldImageUrl = actualityModel.getUrlPhoto();
                                             String oldDesc = actualityModel.getDescription();
-                                            Glide.with(getApplicationContext()).load(oldImageUrl).into(ivPost);
+                                            Glide.with(getApplicationContext()).load(oldImageUrl).apply(RequestOptions.centerCropTransform()).into(ivPost);
                                             etPost.setHint(oldDesc);
                                             final Date currentTime = Calendar.getInstance().getTime();
                                             SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");

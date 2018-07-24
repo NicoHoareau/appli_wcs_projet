@@ -61,7 +61,7 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(CreatePostActivity.this);
-                builder.setTitle("aaa").setMessage("aaaa")
+                builder.setTitle(R.string.add_new_pic)
                         .setPositiveButton("camera", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -83,7 +83,7 @@ public class CreatePostActivity extends AppCompatActivity {
         TextView dateText = findViewById(R.id.tv_modif_date);
         final Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-        String date = formatter.format(currentTime);
+        final String date = formatter.format(currentTime);
         dateText.setText(date);
         final long dateLong = currentTime.getTime();
 
@@ -101,7 +101,8 @@ public class CreatePostActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (!mGetImageUrl.equals("") && mGetImageUrl != null) {
-                                StorageReference avatarRef = FirebaseStorage.getInstance().getReference("PhotoPost");
+                                Date date1 = new Date();
+                                StorageReference avatarRef = FirebaseStorage.getInstance().getReference().child("PhotoPost").child(mUid).child("post"+ date1.getTime());
                                 avatarRef.putFile(mFileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
                                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -154,7 +155,7 @@ public class CreatePostActivity extends AppCompatActivity {
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = CreatePostActivity.this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
-                imageFileName,  /* prefix */
+                imageFileName ,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );

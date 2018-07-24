@@ -42,7 +42,7 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
         String dateformat = sdf.format(actualityModel.getDatePost());
         tvDatePost.setText(dateformat);
 
-        Glide.with(parent.getContext()).load(actualityModel.getUrlPhoto()).into(ivAddPhoto);
+        Glide.with(parent.getContext()).load(actualityModel.getUrlPhoto()).apply(RequestOptions.centerCropTransform()).into(ivAddPhoto);
 
         tvDescription.setText(actualityModel.getDescription());
 
