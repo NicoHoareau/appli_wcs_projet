@@ -72,5 +72,7 @@
     <string name="splash_text3">Personnaliser votre profil et visionner celui de vos amis wilders dans le Wild Club</string>
     <string name="splash_text4">Discuter avec tous les wilders via le Wild Chat :D</string>
     <string name="add_new_pic">Ajouter une nouvelle photo</string>
+    <string name="valid">Valider</string>
+    <string name="my_request">Ma requête...</string>
 
 </resources>

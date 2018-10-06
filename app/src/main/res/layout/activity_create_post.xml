@@ -1,35 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CreatePostActivity" android:background="#FFF">
-
-    <ImageView
-        android:id="@+id/iv_modify_photo"
-        android:layout_width="247dp"
-        android:layout_height="237dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_modif_date"
-        app:srcCompat="@drawable/cerf_nb" />
-
-    <EditText
-        android:id="@+id/et_modify_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="@string/description"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_modify_photo" />
+    tools:context=".activity.CreatePostActivity" android:background="#FFF"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_modif_date"
@@ -39,9 +15,26 @@
         android:text="@string/textview"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/iv_modify_photo"
+        android:layout_width="247dp"
+        android:layout_height="237dp"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/cerf_nb" />
+
+    <EditText
+        android:id="@+id/et_modify_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/description"
+        android:inputType="text|textCapSentences" />
 
     <Button
         android:id="@+id/btn_validate_post"
@@ -49,11 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@color/wcsOrange"
-        android:text="Valider"
+        android:text="@string/valid"
         android:textColor="#fff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_modify_desc" />
+        android:layout_gravity="center"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
