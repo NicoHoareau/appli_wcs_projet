@@ -27,8 +27,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import fr.nicolashoareau_toulousewcs.appliwcsprojet.helper.CameraUtils;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.helper.CameraUtils;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.UserModel;
 
 public class CreateProfilActivity extends AppCompatActivity {
@@ -125,17 +125,13 @@ public class CreateProfilActivity extends AppCompatActivity {
                 String year = mEditAnnee.getText().toString();
                 if (firstName.isEmpty()) {
                     Toast.makeText(CreateProfilActivity.this, "Entrez un pseudo", Toast.LENGTH_SHORT).show();
-                }
-                else if (!mJs.isChecked() && !mJava.isChecked()){
+                } else if (!mJs.isChecked() && !mJava.isChecked()) {
                     Toast.makeText(CreateProfilActivity.this, "Cochez un langage", Toast.LENGTH_SHORT).show();
-                }
-                else if (!mFevrier.isChecked() && !mSeptembre.isChecked()) {
+                } else if (!mFevrier.isChecked() && !mSeptembre.isChecked()) {
                     Toast.makeText(CreateProfilActivity.this, "Cochez une promotion", Toast.LENGTH_SHORT).show();
-                }
-                else if (year.isEmpty()) {
+                } else if (year.isEmpty()) {
                     Toast.makeText(CreateProfilActivity.this, "Entrez une année de promotion", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     saveUserModel();
 
                     Intent intentHome = new Intent(CreateProfilActivity.this, MenuActivity.class);

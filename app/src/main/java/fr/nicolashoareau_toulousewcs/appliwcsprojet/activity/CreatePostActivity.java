@@ -3,12 +3,12 @@ package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,23 +34,22 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.ActualityModel;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.ActualityModel;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.UserModel;
 
 public class CreatePostActivity extends AppCompatActivity {
 
+    public final static int GALLERY = 123;
+    public final static int APP_PHOTO = 456;
+    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 101;
     FirebaseDatabase mDatabase;
     DatabaseReference mCreatePostRef;
     private String mUid;
-
     private ImageView mAddPhoto;
     private String mGetImageUrl = "";
     private String mCurrentPhotoPath;
     private Uri mFileUri = null;
-    public final static int GALLERY = 123;
-    public final static int APP_PHOTO = 456;
-    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,17 +95,16 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String textDescriptionPost = etDescriptionPost.getText().toString();
-                if (textDescriptionPost.isEmpty()){
+                if (textDescriptionPost.isEmpty()) {
                     Toast.makeText(CreatePostActivity.this, R.string.advert_description, Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     mCreatePostRef = mDatabase.getReference("Post");
                     mCreatePostRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (!mGetImageUrl.equals("") && mGetImageUrl != null) {
                                 Date date1 = new Date();
-                                StorageReference avatarRef = FirebaseStorage.getInstance().getReference().child("PhotoPost").child(mUid).child("post"+ date1.getTime());
+                                StorageReference avatarRef = FirebaseStorage.getInstance().getReference().child("PhotoPost").child(mUid).child("post" + date1.getTime());
                                 avatarRef.putFile(mFileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                     @Override
                                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -120,7 +118,7 @@ public class CreatePostActivity extends AppCompatActivity {
                                             @Override
                                             public void onDataChange(DataSnapshot dataSnapshot) {
                                                 UserModel userModel = dataSnapshot.getValue(UserModel.class);
-                                                String pseudo =  userModel.getPseudo();
+                                                String pseudo = userModel.getPseudo();
                                                 String urlPhotoUser = userModel.getProfilPic();
                                                 ActualityModel actualityModel = new ActualityModel(pseudo, textDescriptionPost, avatarUrl, urlPhotoUser, dateLong, mUid);
                                                 mCreatePostRef.push().setValue(actualityModel);
@@ -136,11 +134,11 @@ public class CreatePostActivity extends AppCompatActivity {
                                 });
                                 Intent intent = new Intent(CreatePostActivity.this, MenuActivity.class);
                                 startActivity(intent);
-                            }
-                            else {
+                            } else {
                                 Toast.makeText(CreatePostActivity.this, R.string.no_image, Toast.LENGTH_SHORT).show();
                             }
                         }
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
 
@@ -159,7 +157,7 @@ public class CreatePostActivity extends AppCompatActivity {
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = CreatePostActivity.this.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
-                imageFileName ,  /* prefix */
+                imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
@@ -170,7 +168,7 @@ public class CreatePostActivity extends AppCompatActivity {
     }
 
     private void dispatchTakePictureIntent() {
-        Intent takePicture = new  Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePicture.resolveActivity(CreatePostActivity.this.getPackageManager()) != null) {
             File photoFile = null;
             try {
@@ -220,10 +218,6 @@ public class CreatePostActivity extends AppCompatActivity {
                 break;
         }
     }
-
-
-
-
 
 
 }

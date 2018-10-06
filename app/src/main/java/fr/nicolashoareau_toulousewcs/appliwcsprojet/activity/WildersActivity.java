@@ -3,9 +3,9 @@ package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,8 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
-import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.UserModel;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.adapter.WildersAdapter;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.UserModel;
 
 public class WildersActivity extends AppCompatActivity {
 
@@ -49,7 +49,7 @@ public class WildersActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userModels.clear();
-                for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()) {
                     UserModel userModel = wildersSnapshot.child("Profil").getValue(UserModel.class);
                     userModels.add(userModel);
 
@@ -66,7 +66,7 @@ public class WildersActivity extends AppCompatActivity {
 
         final Spinner spinnerLanguage = findViewById(R.id.spinner);
         //Utiliser un Adapter pour rentrer les données du spinner_array
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.spinnerLanguage, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.spinnerLanguage, android.R.layout.simple_spinner_item);
         //Spécifier le layout à utiliser pour afficher les données
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Appliquer l'adapter au spinner
@@ -81,7 +81,7 @@ public class WildersActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             userModels.clear();
-                            for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()){
+                            for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()) {
                                 if (wildersSnapshot.child("Profil").child("language").getValue(String.class).equals("Java")) {
                                     UserModel userModel = wildersSnapshot.child("Profil").getValue(UserModel.class);
                                     userModels.add(userModel);
@@ -89,6 +89,7 @@ public class WildersActivity extends AppCompatActivity {
                             }
                             adapter.notifyDataSetChanged();
                         }
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
 
@@ -102,7 +103,7 @@ public class WildersActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             userModels.clear();
-                            for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()){
+                            for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()) {
                                 if (wildersSnapshot.child("Profil").child("language").getValue(String.class).equals("Javascript")) {
                                     UserModel userModel = wildersSnapshot.child("Profil").getValue(UserModel.class);
                                     userModels.add(userModel);
@@ -110,6 +111,7 @@ public class WildersActivity extends AppCompatActivity {
                             }
                             adapter.notifyDataSetChanged();
                         }
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
 
@@ -123,13 +125,14 @@ public class WildersActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             userModels.clear();
-                            for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()){
+                            for (DataSnapshot wildersSnapshot : dataSnapshot.getChildren()) {
                                 UserModel userModel = wildersSnapshot.child("Profil").getValue(UserModel.class);
                                 userModels.add(userModel);
 
                             }
                             adapter.notifyDataSetChanged();
                         }
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
 
@@ -138,6 +141,7 @@ public class WildersActivity extends AppCompatActivity {
                     listWilders.setAdapter(adapter);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 

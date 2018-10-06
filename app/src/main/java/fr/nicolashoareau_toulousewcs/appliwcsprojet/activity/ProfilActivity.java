@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,9 +45,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.adapter.ActualityAdapter;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.ActualityModel;
-import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
 
 public class ProfilActivity extends AppCompatActivity {
 
@@ -55,9 +55,8 @@ public class ProfilActivity extends AppCompatActivity {
     public final static int GALLERY_MODIF_PHOTO = 798;
     public final static int APP_PHOTO = 456;
     public final static int APP_MODIF_PHOTO = 333;
-
-
-
+    FirebaseDatabase mDatabase;
+    DatabaseReference mProfileRef;
     private String mUid;
     private DatabaseReference mPathID;
     private DatabaseReference mPostID;
@@ -67,9 +66,6 @@ public class ProfilActivity extends AppCompatActivity {
     private String mCurrentPhotoPath;
     private String mKeyPostModif;
     private FirebaseAuth mAuth;
-
-    FirebaseDatabase mDatabase;
-    DatabaseReference mProfileRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +100,7 @@ public class ProfilActivity extends AppCompatActivity {
                 ImageView logoLanguage = findViewById(R.id.iv_logo_language);
                 if (language.equals("Java")) {
                     Glide.with(getApplicationContext()).load(R.drawable.java_logo).into(logoLanguage);
-                }
-                else {
+                } else {
                     Glide.with(getApplicationContext()).load(R.drawable.js_logo).into(logoLanguage);
                 }
 
@@ -129,10 +124,10 @@ public class ProfilActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 actualityModelArrayList.clear();
-                for (final DataSnapshot listActualitySnapshot : dataSnapshot.getChildren()){
+                for (final DataSnapshot listActualitySnapshot : dataSnapshot.getChildren()) {
                     final ActualityModel actualityModel = listActualitySnapshot.getValue(ActualityModel.class);
                     String idUserPost = actualityModel.getIdUser();
-                    if (idUserPost.equals(mUid)){
+                    if (idUserPost.equals(mUid)) {
                         actualityModelArrayList.add(actualityModel);
                     }
 
@@ -150,8 +145,8 @@ public class ProfilActivity extends AppCompatActivity {
                             alertDialogBuilder
                                     .setMessage("supp")
                                     .setCancelable(true)
-                                    .setPositiveButton("Supprimer",new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog,int id) {
+                                    .setPositiveButton("Supprimer", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
                                             DatabaseReference databaseReference = mProfileRef.child(mKeyPostModif);
                                             databaseReference.removeValue();
                                             dialog.cancel();
@@ -159,11 +154,11 @@ public class ProfilActivity extends AppCompatActivity {
 
                                         }
                                     })
-                                    .setNegativeButton("modifier",new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog,int id) {
+                                    .setNegativeButton("modifier", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
 
                                             AlertDialog.Builder builder = new AlertDialog.Builder(ProfilActivity.this);
-                                            LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                                            LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                                             final View view = inflater.inflate(R.layout.modify_post_dialog, null);
                                             builder.setView(view);
                                             final AlertDialog dialogModify = builder.create();
@@ -214,15 +209,13 @@ public class ProfilActivity extends AppCompatActivity {
                                             });
 
 
-
-
                                             dialogModify.show();
 
                                         }
                                     });
 
                             // create alert dialog
-                             final android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder.create();
+                            final android.support.v7.app.AlertDialog alertDialog = alertDialogBuilder.create();
 
                             // show it
                             alertDialog.show();
@@ -233,12 +226,12 @@ public class ProfilActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 Collections.reverse(actualityModelArrayList);
             }
+
             @Override
             public void onCancelled(DatabaseError error) {
 
             }
         });
-
 
 
     }
@@ -289,7 +282,7 @@ public class ProfilActivity extends AppCompatActivity {
                             postRef.orderByChild("idUser").equalTo(mUid).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    for (DataSnapshot post : dataSnapshot.getChildren()){//pour chaque enfant
+                                    for (DataSnapshot post : dataSnapshot.getChildren()) {//pour chaque enfant
                                         ActualityModel actualityModel = post.getValue(ActualityModel.class);
                                         actualityModel.setPseudoUser(pseudo);//on créé un nouveau de la nouvelle valeur modif
                                         postRef.child(post.getKey()).setValue(actualityModel);//on réinjecte le model modifié pour la clé correspondante
@@ -450,7 +443,6 @@ public class ProfilActivity extends AppCompatActivity {
     }
 
 
-
     private void saveCaptureImage() {
         if (!mGetImageUrl.equals("") && mGetImageUrl != null) {
             StorageReference ref = FirebaseStorage.getInstance().getReference().child(mUid).child("avatar.jpg");
@@ -465,7 +457,7 @@ public class ProfilActivity extends AppCompatActivity {
                     postRef.orderByChild("idUser").equalTo(mUid).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot post : dataSnapshot.getChildren()){
+                            for (DataSnapshot post : dataSnapshot.getChildren()) {
                                 ActualityModel actualityModel = post.getValue(ActualityModel.class);
                                 actualityModel.setUrlPhotoUser(downloadUri.toString());
                                 postRef.child(post.getKey()).setValue(actualityModel);
@@ -482,6 +474,7 @@ public class ProfilActivity extends AppCompatActivity {
             });
         }
     }
+
     private void saveModifImage() {
         if (!mGetImageUrl.equals("") && mGetImageUrl != null) {
             StorageReference ref = FirebaseStorage.getInstance().getReference().child("Post").child(mUid).child("avatar.jpg");
@@ -491,8 +484,6 @@ public class ProfilActivity extends AppCompatActivity {
                     final Uri downloadUri = taskSnapshot.getDownloadUrl();
                     FirebaseDatabase.getInstance().getReference("Post")
                             .child(mKeyPostModif).child("urlPhoto").setValue(downloadUri.toString());
-
-
 
 
                 }

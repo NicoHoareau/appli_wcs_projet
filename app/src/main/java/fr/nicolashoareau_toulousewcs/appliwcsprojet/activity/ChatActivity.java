@@ -1,21 +1,14 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
@@ -69,7 +61,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 chatModels.clear();
-                for (DataSnapshot message: dataSnapshot.getChildren()) {
+                for (DataSnapshot message : dataSnapshot.getChildren()) {
                     ChatModel chatModel = message.getValue(ChatModel.class);
                     chatModels.add(new ChatModel(chatModel.getName(), chatModel.getMsg()));
                 }

@@ -1,8 +1,8 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +48,7 @@ public class CreateRequestActivity extends AppCompatActivity {
         RequestModel requestModel = new RequestModel(" ", codeRequest, 0, false, mUid);
         mCreateRequestRef.child(codeRequest).setValue(requestModel);
 
-        TextView tvDate  = (TextView) findViewById(R.id.tv_date_request);
+        TextView tvDate = (TextView) findViewById(R.id.tv_date_request);
         final Date currentTime = Calendar.getInstance().getTime();
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
         String date = formatter.format(currentTime);

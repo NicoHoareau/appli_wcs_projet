@@ -2,11 +2,11 @@ package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -24,7 +24,7 @@ import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.ActualityFragment;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.RequestFragment;
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.ValidationRequestFragment;
 
-public class MenuActivity extends AppCompatActivity implements RequestFragment.OnFragmentInteractionListener, ValidationRequestFragment.OnFragmentInteractionListener, ActualityFragment.OnFragmentInteractionListener{
+public class MenuActivity extends AppCompatActivity implements RequestFragment.OnFragmentInteractionListener, ValidationRequestFragment.OnFragmentInteractionListener, ActualityFragment.OnFragmentInteractionListener {
 
     private FirebaseDatabase mDatabase;
 
@@ -53,7 +53,6 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
                 startActivity(goToWilders);
             }
         });
-
 
 
         final ImageView profile = findViewById(R.id.iv_profile);
@@ -138,12 +137,12 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
                     });
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-
 
 
     }
