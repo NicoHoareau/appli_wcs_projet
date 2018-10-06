@@ -1,4 +1,4 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.activity.CreateRequestActivity;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.adapter.RequestAdapter;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.RequestModel;
 
 
 /**

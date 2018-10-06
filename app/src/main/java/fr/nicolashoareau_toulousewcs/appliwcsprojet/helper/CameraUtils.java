@@ -1,4 +1,4 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.helper;
 
 import android.content.Context;
 import android.graphics.Bitmap;

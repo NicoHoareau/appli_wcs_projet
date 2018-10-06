@@ -1,4 +1,4 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,12 +7,10 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,6 +44,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.adapter.ActualityAdapter;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.ActualityModel;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
 
 public class ProfilActivity extends AppCompatActivity {
 

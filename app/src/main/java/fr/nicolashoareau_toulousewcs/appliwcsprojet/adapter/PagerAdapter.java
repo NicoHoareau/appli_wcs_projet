@@ -1,8 +1,12 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.ActualityFragment;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.RequestFragment;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.ValidationRequestFragment;
 
 /**
  * Created by wilder on 15/04/18.

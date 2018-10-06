@@ -1,8 +1,6 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -10,9 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -23,7 +19,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.ActualityFragment;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.RequestFragment;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.ValidationRequestFragment;
 
 public class MenuActivity extends AppCompatActivity implements RequestFragment.OnFragmentInteractionListener, ValidationRequestFragment.OnFragmentInteractionListener, ActualityFragment.OnFragmentInteractionListener{
 
@@ -96,7 +95,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
         tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PagerAdapter adapter = new fr.nicolashoareau_toulousewcs.appliwcsprojet.PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final PagerAdapter adapter = new fr.nicolashoareau_toulousewcs.appliwcsprojet.adapter.PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

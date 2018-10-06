@@ -1,4 +1,4 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.model;
 
 public class UserModel {
     private String pseudo;

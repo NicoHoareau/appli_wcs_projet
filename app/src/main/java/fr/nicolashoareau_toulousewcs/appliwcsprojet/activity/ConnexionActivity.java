@@ -1,4 +1,4 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
 
 public class ConnexionActivity extends AppCompatActivity {
 
@@ -46,7 +48,7 @@ public class ConnexionActivity extends AppCompatActivity {
         oublieMdp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ConnexionActivity.this, OubliePassword.class);
+                Intent intent = new Intent(ConnexionActivity.this, OubliePasswordActivity.class);
                 startActivity(intent);
             }
         });

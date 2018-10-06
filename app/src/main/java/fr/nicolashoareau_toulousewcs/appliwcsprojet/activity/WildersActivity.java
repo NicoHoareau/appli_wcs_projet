@@ -1,10 +1,8 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
+
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.UserModel;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.adapter.WildersAdapter;
 
 public class WildersActivity extends AppCompatActivity {
 

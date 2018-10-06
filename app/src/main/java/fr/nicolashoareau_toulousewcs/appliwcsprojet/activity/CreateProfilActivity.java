@@ -1,4 +1,4 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -26,6 +26,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.helper.CameraUtils;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.UserModel;
 
 public class CreateProfilActivity extends AppCompatActivity {
 

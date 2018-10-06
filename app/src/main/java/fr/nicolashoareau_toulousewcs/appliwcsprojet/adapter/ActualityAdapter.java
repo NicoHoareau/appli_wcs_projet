@@ -1,4 +1,4 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,6 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.ActualityModel;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
 
 public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
 

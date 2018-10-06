@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreatePostActivity" android:background="#FFF">
+    tools:context=".activity.CreatePostActivity" android:background="#FFF">
 
     <ImageView
         android:id="@+id/iv_modify_photo"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@color/wcsColor"
+        android:background="@color/wcsOrange"
         android:text="Valider"
         android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"

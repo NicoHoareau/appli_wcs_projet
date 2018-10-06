@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.MenuActivity"
+    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.activity.MenuActivity"
     android:id="@+id/drawer_profile" android:background="#FFF">
 
 
@@ -32,7 +32,7 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
-                android:tint="@color/wcsColor"
+                android:tint="@color/wcsOrange"
                 app:srcCompat="@drawable/logo_friends"
                 app:tintMode="src_in" />
 

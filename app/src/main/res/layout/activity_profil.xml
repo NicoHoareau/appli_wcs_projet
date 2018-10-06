@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.ProfilActivity">
+    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.activity.ProfilActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -34,7 +34,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/pseudo"
         android:textAlignment="center"
-        android:textColor="@color/wcsColor"
+        android:textColor="@color/wcsOrange"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/iv_profilPic"
@@ -48,7 +48,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:divider="@color/wcsColor"
+        android:divider="@color/wcsOrange"
         android:dividerHeight="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

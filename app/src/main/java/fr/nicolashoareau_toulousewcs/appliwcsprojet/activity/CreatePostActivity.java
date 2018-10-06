@@ -1,4 +1,4 @@
-package fr.nicolashoareau_toulousewcs.appliwcsprojet;
+package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -33,6 +33,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.ActualityModel;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
+import fr.nicolashoareau_toulousewcs.appliwcsprojet.model.UserModel;
 
 public class CreatePostActivity extends AppCompatActivity {
 
