@@ -28,26 +28,26 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".FirstScreenActivity">
+        <activity android:name=".activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConnexionActivity" />
-        <activity android:name=".InscriptionActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".CreateRequestActivity" />
-        <activity android:name=".ProfilActivity" />
+        <activity android:name=".activity.ConnectionActivity" />
+        <activity android:name=".activity.SignInActivity" />
+        <activity android:name=".activity.MenuActivity" />
+        <activity android:name=".activity.CreateRequestActivity" />
+        <activity android:name=".activity.ProfilActivity" />
         <activity
-            android:name=".OubliePassword"
+            android:name=".activity.ForgotPasswordActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".CreateProfilActivity" />
-        <activity android:name=".CreatePostActivity" />
-        <activity android:name=".ChatActivity"
+        <activity android:name=".activity.CreateProfilActivity" />
+        <activity android:name=".activity.CreatePostActivity" />
+        <activity android:name=".activity.ChatActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <activity android:name=".WildersActivity"></activity>
+        <activity android:name=".activity.WildersActivity"></activity>
     </application>
 
 </manifest>

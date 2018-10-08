@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateProfilActivity" android:background="#FFF">
+    tools:context=".activity.CreateProfilActivity" android:background="#FFF">
 
     <ImageView
         android:id="@+id/iv_profil_pic"
@@ -32,7 +32,8 @@
             android:layout_width="40dp"
             android:layout_height="45dp"
             android:layout_marginRight="32dp"
-            app:srcCompat="@drawable/app_photo" />
+            app:srcCompat="@drawable/app_photo"
+            android:layout_marginEnd="32dp" />
 
         <ImageView
             android:id="@+id/btn_gallery"
@@ -78,7 +79,8 @@
             android:duplicateParentState="false"
             android:text="@string/java_android"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_enter_pseudo" />
+            app:layout_constraintTop_toBottomOf="@+id/et_enter_pseudo"
+            android:layout_marginEnd="16dp" />
 
         <RadioButton
             android:id="@+id/radiobutton_js"
@@ -109,7 +111,8 @@
             android:text="@string/promotion"
             android:layout_marginRight="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage" />
+            app:layout_constraintTop_toBottomOf="@+id/langage"
+            android:layout_marginEnd="8dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -121,16 +124,17 @@
                 android:id="@+id/radiobutton_fev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fev"
+                android:text="@string/february"
                 android:layout_marginRight="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/langage" />
+                app:layout_constraintTop_toBottomOf="@+id/langage"
+                android:layout_marginEnd="8dp" />
 
             <RadioButton
                 android:id="@+id/radiobutton_sept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sept"
+                android:text="@string/september"
                 app:layout_constraintStart_toEndOf="@+id/radiobutton_fev"
                 app:layout_constraintTop_toBottomOf="@+id/langage" />
         </RadioGroup>
@@ -140,10 +144,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:hint="@string/annee"
+            android:hint="@string/year"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage" />
+            app:layout_constraintTop_toBottomOf="@+id/langage"
+            android:layout_marginStart="16dp" />
     </LinearLayout>
 
 
@@ -154,8 +159,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:background="#58C4B8"
-        android:text="@string/valider"
+        android:background="@color/wcsGreen"
+        android:text="@string/validate"
         android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

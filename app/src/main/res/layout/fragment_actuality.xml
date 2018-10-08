@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.ActualityFragment">
+    tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.ActualityFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:layout_marginRight="24dp"
             android:src="@android:drawable/ic_input_add"
             android:tint="@android:color/white"
-            app:backgroundTint="@color/wcsColor"
+            app:backgroundTint="@color/wcsOrange"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
