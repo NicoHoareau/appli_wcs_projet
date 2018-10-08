@@ -16,7 +16,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        ImageView ivClearWindows = findViewById(R.id.iv_clear);
+        ImageView ivClearWindows = findViewById(R.id.iv_close);
         ivClearWindows.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

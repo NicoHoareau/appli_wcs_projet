@@ -7,7 +7,7 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/iv_userpic"
+        android:id="@+id/iv_pix"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginBottom="16dp"
@@ -27,7 +27,7 @@
         android:layout_marginStart="16dp">
 
         <TextView
-            android:id="@+id/tv_pseudo_wilder"
+            android:id="@+id/tv_pseudo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/pseudo"
@@ -37,7 +37,7 @@
             android:layout_marginBottom="4dp"/>
 
         <TextView
-            android:id="@+id/tv_promo_wilder"
+            android:id="@+id/tv_promo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/promotion"
@@ -46,7 +46,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/iv_wilder_promo"
+        android:id="@+id/iv_language"
         android:layout_width="57dp"
         android:layout_height="45dp"
         android:layout_gravity="center_vertical"

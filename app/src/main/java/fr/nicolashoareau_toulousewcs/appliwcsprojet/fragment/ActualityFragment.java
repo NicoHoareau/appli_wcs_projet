@@ -122,7 +122,7 @@ public class ActualityFragment extends Fragment {
         final ActualityAdapter adapter = new ActualityAdapter(getContext(), actualityModelArrayList);
         listActuality.setAdapter(adapter);
 
-        mBtnFloat = view.findViewById(R.id.btn_float_actuality);
+        mBtnFloat = view.findViewById(R.id.fab_actuality);
         mBtnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

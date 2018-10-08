@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +73,14 @@ public class ProfilActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ImageView ivBack = findViewById(R.id.btn_back);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfilActivity.this, MenuActivity.class));
+            }
+        });
+
         mDatabase = FirebaseDatabase.getInstance();
 
         mAuth = FirebaseAuth.getInstance();
@@ -85,7 +94,7 @@ public class ProfilActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 String urlSave = dataSnapshot.child("Profil").child("profilPic").getValue(String.class);
-                mProfilPix = findViewById(R.id.iv_profilPic);
+                mProfilPix = findViewById(R.id.iv_profil_pic);
                 Glide.with(getApplicationContext()).load(urlSave)
                         .apply(RequestOptions.circleCropTransform()).into(mProfilPix);
 
@@ -160,8 +169,8 @@ public class ProfilActivity extends AppCompatActivity {
                                             builder.setView(view);
                                             final AlertDialog dialogModify = builder.create();
                                             //contains modif post
-                                            final ImageView ivPost = view.findViewById(R.id.iv_modify_photo);
-                                            final EditText etPost = view.findViewById(R.id.et_modify_desc);
+                                            final ImageView ivPost = view.findViewById(R.id.iv_take_pix);
+                                            final EditText etPost = view.findViewById(R.id.et_edit_description);
                                             TextView tvdate = view.findViewById(R.id.tv_date);
                                             Button btSendModif = view.findViewById(R.id.btn_send_modif);
 

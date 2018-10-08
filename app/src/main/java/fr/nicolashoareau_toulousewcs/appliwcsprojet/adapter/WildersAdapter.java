@@ -10,12 +10,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -40,10 +36,10 @@ public class WildersAdapter extends ArrayAdapter<UserModel>{
         }
         final UserModel userModel = (UserModel) getItem(position);
 
-        final ImageView ivWilderPicture = convertView.findViewById(R.id.iv_userpic);
-        TextView tvWilderPseudo = convertView.findViewById(R.id.tv_pseudo_wilder);
-        TextView tvWilderPromo = convertView.findViewById(R.id.tv_promo_wilder);
-        final ImageView ivLogoPromo = convertView.findViewById(R.id.iv_wilder_promo);
+        final ImageView ivWilderPicture = convertView.findViewById(R.id.iv_pix);
+        TextView tvWilderPseudo = convertView.findViewById(R.id.tv_pseudo);
+        TextView tvWilderPromo = convertView.findViewById(R.id.tv_promo);
+        final ImageView ivLogoPromo = convertView.findViewById(R.id.iv_language);
         Glide.with(getContext()).load(userModel.getProfilPic()).apply(RequestOptions.circleCropTransform()).into(ivWilderPicture);
 
         tvWilderPseudo.setText(userModel.getPseudo());

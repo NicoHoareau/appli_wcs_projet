@@ -27,9 +27,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oublie_password);
 
-        final EditText inputEmail = findViewById(R.id.et_email_oublie);
-        Button newPass = findViewById(R.id.btn_nouveau_mdp);
-        Button back = findViewById(R.id.btn_retour);
+        final EditText inputEmail = findViewById(R.id.et_email);
+        Button newPass = findViewById(R.id.btn_new_password);
+        Button back = findViewById(R.id.btn_back);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
 
         back.setOnClickListener(new View.OnClickListener() {

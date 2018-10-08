@@ -37,6 +37,14 @@ public class WildersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wilders);
 
+        ImageView ivBack = findViewById(R.id.btn_back);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WildersActivity.this, MenuActivity.class));
+            }
+        });
+
         mDatabase = FirebaseDatabase.getInstance();
 
         final ListView listWilders = findViewById(R.id.list_wilders);
@@ -159,14 +167,14 @@ public class WildersActivity extends AppCompatActivity {
                 final AlertDialog dialog = mBuilder.create();
 
                 //Interactions avec les boutons :
-                Button btnClose = mView.findViewById(R.id.btn_cancel_dialog);
+                Button btnClose = mView.findViewById(R.id.btn_cancel);
                 btnClose.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         dialog.cancel();
                     }
                 });
-                ImageView googlePlay = mView.findViewById(R.id.iv_google_play_store);
+                ImageView googlePlay = mView.findViewById(R.id.iv_play_store);
                 googlePlay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

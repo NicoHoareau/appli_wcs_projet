@@ -34,7 +34,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        ImageView deco = findViewById(R.id.btn_deco);
+        ImageView deco = findViewById(R.id.iv_log_out);
         deco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +128,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
                 if ((dataSnapshot.child("Profil").child("pseudo").getValue() != null)) {
                     final String pseudo = dataSnapshot.child("Profil").child("pseudo").getValue(String.class);
 
-                    ImageView imageIconWCS = findViewById(R.id.img_icon);
+                    ImageView imageIconWCS = findViewById(R.id.iv_chat);
                     imageIconWCS.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {

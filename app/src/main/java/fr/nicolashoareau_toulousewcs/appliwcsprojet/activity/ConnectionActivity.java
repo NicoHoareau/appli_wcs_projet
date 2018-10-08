@@ -24,9 +24,9 @@ public class ConnectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
 
-        Button logIn = findViewById(R.id.btn_inscription);
-        Button signIn = findViewById(R.id.btn_deja_inscrit);
-        Button forgotPass = findViewById(R.id.btn_mdp_oublie);
+        Button logIn = findViewById(R.id.btn_sign_in);
+        Button signIn = findViewById(R.id.btn_already_registered);
+        Button forgotPass = findViewById(R.id.btn_forgot_pass);
 
         final EditText etEmail = findViewById(R.id.et_email);
         final EditText etPassword = findViewById(R.id.et_password);

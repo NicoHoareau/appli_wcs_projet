@@ -14,7 +14,7 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/tv_dateRequest"
+            android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/wcsOrange"
@@ -24,7 +24,7 @@
             tools:text="date" />
 
         <TextView
-            android:id="@+id/tv_descriptionRequest"
+            android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/iv_modify_request"
+            android:id="@+id/iv_edit"
             android:layout_width="20dp"
             android:layout_height="32dp"
             android:layout_marginBottom="8dp"
@@ -53,7 +53,7 @@
             app:srcCompat="@drawable/edit" />
 
         <ImageView
-            android:id="@+id/iv_accept_request"
+            android:id="@+id/iv_accept"
             android:layout_width="20dp"
             android:layout_height="32dp"
             android:layout_marginBottom="8dp"
@@ -62,7 +62,7 @@
             app:srcCompat="@drawable/accept" />
 
         <ImageView
-            android:id="@+id/iv_remove_request"
+            android:id="@+id/iv_remove"
             android:layout_width="20dp"
             android:layout_height="32dp"
             android:visibility="visible"

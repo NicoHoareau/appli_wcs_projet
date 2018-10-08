@@ -8,16 +8,31 @@
     tools:context=".activity.ChatActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="@string/wild_chat"
-        android:textColor="@color/wcsOrange"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_gravity="center" />
+        android:orientation="horizontal"
+        android:layout_marginRight="40dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/icons8_gauche_48"
+            android:layout_margin="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="8dp"
+            android:text="@string/wild_chat"
+            android:textColor="@color/wcsOrange"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_chat"
@@ -38,7 +53,7 @@
         android:gravity="center">
 
         <EditText
-            android:id="@+id/et_msg_person"
+            android:id="@+id/et_msg"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"

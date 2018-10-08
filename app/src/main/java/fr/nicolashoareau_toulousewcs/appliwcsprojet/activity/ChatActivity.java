@@ -1,5 +1,6 @@
 package fr.nicolashoareau_toulousewcs.appliwcsprojet.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,7 +40,15 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         mPseudo = getIntent().getExtras().get(PSEUDO).toString();
-        mMessage = findViewById(R.id.et_msg_person);
+        mMessage = findViewById(R.id.et_msg);
+
+        ImageView ivBack = findViewById(R.id.btn_back);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ChatActivity.this, MenuActivity.class));
+            }
+        });
 
         final ArrayList<ChatModel> chatModels = new ArrayList<>();
         final RecyclerView listChat = findViewById(R.id.recycler_chat);

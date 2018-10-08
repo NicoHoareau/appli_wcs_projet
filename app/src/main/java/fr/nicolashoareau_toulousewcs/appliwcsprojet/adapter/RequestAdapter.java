@@ -44,17 +44,17 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_fragment_request, parent, false);
         }
 
-        TextView tvDate = convertView.findViewById(R.id.tv_dateRequest);
+        TextView tvDate = convertView.findViewById(R.id.tv_date);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dateformat = sdf.format(requestModel.getDate());
         tvDate.setText(dateformat);
 
-        final TextView tvDescription = convertView.findViewById(R.id.tv_descriptionRequest);
+        final TextView tvDescription = convertView.findViewById(R.id.tv_description);
         tvDescription.setText(requestModel.getDescription());
 
 
-        ImageView btnRqOK = convertView.findViewById(R.id.iv_accept_request);
-        final ImageView btnEdit = convertView.findViewById(R.id.iv_modify_request);
+        ImageView btnRqOK = convertView.findViewById(R.id.iv_accept);
+        final ImageView btnEdit = convertView.findViewById(R.id.iv_edit);
 
         mDatabase = FirebaseDatabase.getInstance();
         mRef = mDatabase.getReference("Request");
@@ -69,8 +69,8 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                 builder.setView(view);
                 final AlertDialog dialog = builder.create();
 
-                final TextView tvDateRq = view.findViewById(R.id.tv_date_dialog);
-                final TextView tvDescRq = view.findViewById(R.id.tv_desc_dialog);
+                final TextView tvDateRq = view.findViewById(R.id.tv_date);
+                final TextView tvDescRq = view.findViewById(R.id.tv_desc);
 
                 mRef.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -84,8 +84,8 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                             String date = dateFormat.format(today);
                             tvDateRq.setText(date);
 
-                            final ImageView editRq = view.findViewById(R.id.edit_req);
-                            final EditText etEditDesc = view.findViewById(R.id.et_edit_desc);
+                            final ImageView editRq = view.findViewById(R.id.iv_edit_req);
+                            final EditText etEditDesc = view.findViewById(R.id.et_desc);
                             editRq.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -141,7 +141,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
             }
         });
 
-        ImageView removeRequest = convertView.findViewById(R.id.iv_remove_request);
+        ImageView removeRequest = convertView.findViewById(R.id.iv_remove);
         removeRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

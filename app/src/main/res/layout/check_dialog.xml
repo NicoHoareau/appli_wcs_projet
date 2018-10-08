@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/edit_req"
+        android:id="@+id/iv_edit_req"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginEnd="16dp"
@@ -25,14 +25,14 @@
         android:paddingRight="16dp">
 
         <TextView
-            android:id="@+id/tv_date_dialog"
+            android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/date"
             android:textColor="@android:color/black" />
 
         <TextView
-            android:id="@+id/tv_desc_dialog"
+            android:id="@+id/tv_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -41,7 +41,7 @@
             tools:text="desc" />
 
         <EditText
-            android:id="@+id/et_edit_desc"
+            android:id="@+id/et_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -49,7 +49,7 @@
             android:visibility="gone"/>
 
         <Button
-            android:id="@+id/btn_ok_modifiy_request"
+            android:id="@+id/btn_edit_request"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"

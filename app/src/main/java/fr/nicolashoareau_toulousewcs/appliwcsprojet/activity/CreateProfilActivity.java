@@ -51,14 +51,14 @@ public class CreateProfilActivity extends AppCompatActivity {
 
         ImageView btnCamera = findViewById(R.id.btn_camera);
         ImageView btnGallery = findViewById(R.id.btn_gallery);
-        Button btnValidModif = findViewById(R.id.btn_valid_modif);
+        Button btnValidModif = findViewById(R.id.btn_valid_profile);
 
         mImgProfilPic = findViewById(R.id.iv_profil_pic);
         mEditPseudo = findViewById(R.id.et_enter_pseudo);
-        mJava = findViewById(R.id.radiobutton_java);
-        mJs = findViewById(R.id.radiobutton_js);
-        mFebruary = findViewById(R.id.radiobutton_fev);
-        mSeptember = findViewById(R.id.radiobutton_sept);
+        mJava = findViewById(R.id.rb_java);
+        mJs = findViewById(R.id.rb_js);
+        mFebruary = findViewById(R.id.rb_fev);
+        mSeptember = findViewById(R.id.rb_sept);
         mEditYear = findViewById(R.id.et_year);
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();

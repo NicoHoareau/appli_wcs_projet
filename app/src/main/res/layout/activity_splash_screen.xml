@@ -40,7 +40,7 @@
 
 
     <TextView
-        android:id="@+id/text_splash_request"
+        android:id="@+id/tv_request"
         android:layout_width="159dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -52,12 +52,12 @@
         android:textColor="@color/wcsOrange"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/text_splash_actuality"
+        app:layout_constraintEnd_toStartOf="@+id/tv_news"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo_create_request" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_request" />
 
     <ImageView
-        android:id="@+id/iv_logo_create_request"
+        android:id="@+id/iv_request"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginLeft="60dp"
@@ -65,10 +65,10 @@
         android:layout_marginTop="45dp"
         app:layout_constraintStart_toStartOf="@+id/tv_splash_app"
         app:layout_constraintTop_toBottomOf="@+id/tv_splash_app"
-        app:srcCompat="@drawable/create_request" />
+        android:src="@drawable/create_request" />
 
     <ImageView
-        android:id="@+id/iv_logo_news"
+        android:id="@+id/iv_news"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="75dp"
@@ -76,10 +76,10 @@
         android:layout_marginTop="45dp"
         app:layout_constraintEnd_toEndOf="@+id/tv_splash_app"
         app:layout_constraintTop_toBottomOf="@+id/tv_splash_app"
-        app:srcCompat="@drawable/news" />
+        android:src="@drawable/news" />
 
     <TextView
-        android:id="@+id/text_splash_actuality"
+        android:id="@+id/tv_news"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -94,11 +94,11 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_splash_request"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo_news" />
+        app:layout_constraintStart_toEndOf="@+id/tv_request"
+        app:layout_constraintTop_toBottomOf="@+id/iv_news" />
 
     <TextView
-        android:id="@+id/text_splash_wildclub"
+        android:id="@+id/tv_wildclub"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -113,11 +113,11 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_splash_wildchat"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo_chat2" />
+        app:layout_constraintStart_toEndOf="@+id/tv_wildchat"
+        app:layout_constraintTop_toBottomOf="@+id/iv_wildclub" />
 
     <TextView
-        android:id="@+id/text_splash_wildchat"
+        android:id="@+id/tv_wildchat"
         android:layout_width="150dp"
         android:layout_height="55dp"
         android:layout_marginLeft="8dp"
@@ -129,34 +129,34 @@
         android:textColor="@color/wcsOrange"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/text_splash_wildclub"
+        app:layout_constraintEnd_toStartOf="@+id/tv_wildclub"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo_chat" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_wild_chat" />
 
     <ImageView
-        android:id="@+id/iv_logo_chat"
+        android:id="@+id/iv_wild_chat"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginLeft="60dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/text_splash_request"
-        app:layout_constraintTop_toBottomOf="@+id/text_splash_actuality"
-        app:srcCompat="@drawable/chat" />
+        app:layout_constraintStart_toStartOf="@+id/tv_request"
+        app:layout_constraintTop_toBottomOf="@+id/tv_news"
+        android:src="@drawable/chat" />
 
     <ImageView
-        android:id="@+id/iv_logo_chat2"
+        android:id="@+id/iv_wildclub"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="75dp"
         android:layout_marginRight="75dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/text_splash_actuality"
-        app:layout_constraintTop_toBottomOf="@+id/text_splash_actuality"
-        app:srcCompat="@drawable/profil" />
+        app:layout_constraintEnd_toEndOf="@+id/tv_news"
+        app:layout_constraintTop_toBottomOf="@+id/tv_news"
+        android:src="@drawable/profil" />
 
     <ImageView
-        android:id="@+id/iv_clear"
+        android:id="@+id/iv_close"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="8dp"
@@ -168,7 +168,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iv_logo_wcs_projet"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/clear" />
+        android:src="@drawable/clear" />
 
 
 </android.support.constraint.ConstraintLayout>

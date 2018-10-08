@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CreateProfilActivity" android:background="#FFF">
+    tools:context=".activity.CreateProfilActivity" android:background="@android:color/white">
 
     <ImageView
         android:id="@+id/iv_profil_pic"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/choice_pic" />
 
     <RadioGroup
-        android:id="@+id/langage"
+        android:id="@+id/language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_enter_pseudo">
 
         <RadioButton
-            android:id="@+id/radiobutton_java"
+            android:id="@+id/rb_java"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="16dp"
@@ -83,7 +83,7 @@
             android:layout_marginEnd="16dp" />
 
         <RadioButton
-            android:id="@+id/radiobutton_js"
+            android:id="@+id/rb_js"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/js_react"
@@ -102,7 +102,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/langage">
+        app:layout_constraintTop_toBottomOf="@+id/language">
 
         <TextView
             android:id="@+id/tv_promotion"
@@ -111,7 +111,7 @@
             android:text="@string/promotion"
             android:layout_marginRight="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage"
+            app:layout_constraintTop_toBottomOf="@+id/language"
             android:layout_marginEnd="8dp" />
 
         <RadioGroup
@@ -121,22 +121,22 @@
             android:layout_gravity="center_vertical">
 
             <RadioButton
-                android:id="@+id/radiobutton_fev"
+                android:id="@+id/rb_fev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/february"
                 android:layout_marginRight="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/langage"
+                app:layout_constraintTop_toBottomOf="@+id/language"
                 android:layout_marginEnd="8dp" />
 
             <RadioButton
-                android:id="@+id/radiobutton_sept"
+                android:id="@+id/rb_sept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/september"
-                app:layout_constraintStart_toEndOf="@+id/radiobutton_fev"
-                app:layout_constraintTop_toBottomOf="@+id/langage" />
+                app:layout_constraintStart_toEndOf="@+id/rb_fev"
+                app:layout_constraintTop_toBottomOf="@+id/language" />
         </RadioGroup>
 
         <EditText
@@ -147,13 +147,13 @@
             android:hint="@string/year"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/langage"
+            app:layout_constraintTop_toBottomOf="@+id/language"
             android:layout_marginStart="16dp" />
     </LinearLayout>
 
 
     <Button
-        android:id="@+id/btn_valid_modif"
+        android:id="@+id/btn_valid_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -161,7 +161,7 @@
         android:layout_marginTop="16dp"
         android:background="@color/wcsGreen"
         android:text="@string/validate"
-        android:textColor="#fff"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"

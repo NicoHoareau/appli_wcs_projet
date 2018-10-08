@@ -143,7 +143,7 @@ public class RequestFragment extends Fragment {
             }
         });
 
-        mBtnFloat = view.findViewById(R.id.btn_float_request);
+        mBtnFloat = view.findViewById(R.id.fab_request);
         mBtnFloat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

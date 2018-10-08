@@ -58,7 +58,15 @@ public class CreatePostActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        mAddPhoto = findViewById(R.id.iv_modify_photo);
+        ImageView ivBack = findViewById(R.id.btn_back);
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreatePostActivity.this, MenuActivity.class));
+            }
+        });
+
+        mAddPhoto = findViewById(R.id.iv_take_pix);
         mAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +88,7 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
-        final EditText etDescriptionPost = findViewById(R.id.et_modify_desc);
+        final EditText etDescriptionPost = findViewById(R.id.et_edit_description);
 
         TextView dateText = findViewById(R.id.tv_date);
         final Date currentTime = Calendar.getInstance().getTime();

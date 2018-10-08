@@ -78,5 +78,6 @@
     <string name="edit_post">Modifier mon post</string>
     <string name="ok">OK</string>
     <string name="url_playstore">https://play.google.com/store/apps/developer?id=Wild+Code+School</string>
+    <string name="edit">Modifier</string>
 
 </resources>

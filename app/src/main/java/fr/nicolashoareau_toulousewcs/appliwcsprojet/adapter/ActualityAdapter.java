@@ -35,8 +35,8 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_fragment_actuality, parent, false);
         }
 
-        final ImageView ivUserPhoto = convertView.findViewById(R.id.iv_userphoto);
-        final TextView tvUsernameUser = convertView.findViewById(R.id.tv_username_user);
+        final ImageView ivUserPhoto = convertView.findViewById(R.id.iv_user_pix);
+        final TextView tvUsernameUser = convertView.findViewById(R.id.tv_username);
         ImageView ivAddPhoto = convertView.findViewById(R.id.iv_photo_added);
         TextView tvDescription = convertView.findViewById(R.id.tv_description_actuality);
         TextView tvDatePost = convertView.findViewById(R.id.tv_date);

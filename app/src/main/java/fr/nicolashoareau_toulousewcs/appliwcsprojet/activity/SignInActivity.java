@@ -28,8 +28,8 @@ public class SignInActivity extends AppCompatActivity {
         final EditText inputEmail = findViewById(R.id.et_email);
         final EditText inputPassword = findViewById(R.id.et_password);
         final TextView msgError = findViewById(R.id.msg_error);
-        Button btnInscription = findViewById(R.id.btn_inscription);
-        Button btnDejaInscrit = findViewById(R.id.btn_deja_inscrit);
+        Button btnInscription = findViewById(R.id.btn_sign_in);
+        Button btnDejaInscrit = findViewById(R.id.btn_already_registered);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
 
         btnDejaInscrit.setOnClickListener(new View.OnClickListener() {

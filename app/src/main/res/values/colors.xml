@@ -5,4 +5,5 @@
     <color name="colorAccent">#ff4081</color>
     <color name="wcsOrange">#fba858</color>
     <color name="wcsGreen">#58C4B8</color>
+    <color name="grey">#d2dcdc</color>
 </resources>
