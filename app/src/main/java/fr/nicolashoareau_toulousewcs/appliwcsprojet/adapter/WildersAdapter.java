@@ -58,6 +58,9 @@ public class WildersAdapter extends ArrayAdapter<UserModel>{
                     RequestOptions.circleCropTransform()).into(ivLogoPromo);
         }
 
+        if (userModel.getProfilPic() == null || userModel.getProfilPic().isEmpty()) {
+            Glide.with(getContext()).load(R.drawable.logo_user2).apply(RequestOptions.centerCropTransform()).into(ivWilderPicture);
+        }
 
 
         return convertView;

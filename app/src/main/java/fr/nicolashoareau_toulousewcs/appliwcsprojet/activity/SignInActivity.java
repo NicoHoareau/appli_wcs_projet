@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
 
-public class InscriptionActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class InscriptionActivity extends AppCompatActivity {
         btnDejaInscrit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InscriptionActivity.this, ConnexionActivity.class);
+                Intent intent = new Intent(SignInActivity.this, ConnectionActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -58,17 +58,17 @@ public class InscriptionActivity extends AppCompatActivity {
                 }
 
                 if (password.length() < 6) {
-                    msgError.setText(R.string.password_trop_court);
+                    msgError.setText(R.string.password_too_short);
                 }
 
                 auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(InscriptionActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(InscriptionActivity.this, R.string.echec_inscription, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignInActivity.this, R.string.failure_registration, Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Intent intent = new Intent(InscriptionActivity.this, CreateProfilActivity.class);
+                                    Intent intent = new Intent(SignInActivity.this, CreateProfilActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -76,5 +76,10 @@ public class InscriptionActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

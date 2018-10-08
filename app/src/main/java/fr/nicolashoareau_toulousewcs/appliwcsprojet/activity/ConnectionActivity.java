@@ -17,72 +17,72 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
 
-public class ConnexionActivity extends AppCompatActivity {
+public class ConnectionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
 
-        Button connexion = findViewById(R.id.btn_inscription);
-        Button inscription = findViewById(R.id.btn_deja_inscrit);
-        Button oublieMdp = findViewById(R.id.btn_mdp_oublie);
+        Button logIn = findViewById(R.id.btn_inscription);
+        Button signIn = findViewById(R.id.btn_deja_inscrit);
+        Button forgotPass = findViewById(R.id.btn_mdp_oublie);
 
         final EditText etEmail = findViewById(R.id.et_email);
         final EditText etPassword = findViewById(R.id.et_password);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        connexion.setText(R.string.connexion);
-        inscription.setText(R.string.inscription);
-        oublieMdp.setVisibility(View.VISIBLE);
+        logIn.setText(R.string.log_in);
+        signIn.setText(R.string.sign_in);
+        forgotPass.setVisibility(View.VISIBLE);
 
-        inscription.setOnClickListener(new View.OnClickListener() {
+        signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ConnexionActivity.this, InscriptionActivity.class);
+                Intent intent = new Intent(ConnectionActivity.this, SignInActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        oublieMdp.setOnClickListener(new View.OnClickListener() {
+        forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ConnexionActivity.this, OubliePasswordActivity.class);
+                Intent intent = new Intent(ConnectionActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
             }
         });
 
         if (auth.getCurrentUser() != null) {
-            Intent intent = new Intent(ConnexionActivity.this, MenuActivity.class);
+            Intent intent = new Intent(ConnectionActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
         }
 
-        connexion.setOnClickListener(new View.OnClickListener() {
+        logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(ConnexionActivity.this, R.string.entrer_email, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ConnectionActivity.this, R.string.entrer_email, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(ConnexionActivity.this, R.string.entrer_password, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ConnectionActivity.this, R.string.entrer_password, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(ConnexionActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(ConnectionActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(ConnexionActivity.this, R.string.utilisateur_inconnu, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ConnectionActivity.this, R.string.unkown_user, Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Intent intent = new Intent(ConnexionActivity.this, MenuActivity.class);
+                                    Intent intent = new Intent(ConnectionActivity.this, MenuActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -90,5 +90,10 @@ public class ConnexionActivity extends AppCompatActivity {
                         });
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

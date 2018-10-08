@@ -27,7 +27,7 @@ import fr.nicolashoareau_toulousewcs.appliwcsprojet.fragment.ValidationRequestFr
 public class MenuActivity extends AppCompatActivity implements RequestFragment.OnFragmentInteractionListener, ValidationRequestFragment.OnFragmentInteractionListener, ActualityFragment.OnFragmentInteractionListener {
 
     private FirebaseDatabase mDatabase;
-
+    public static final String PSEUDO = "pseudo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
         deco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, ConnexionActivity.class);
+                Intent intent = new Intent(MenuActivity.this, ConnectionActivity.class);
                 startActivity(intent);
                 FirebaseAuth.getInstance().signOut();
                 finish();
@@ -68,6 +68,8 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
                     String mUrlSave = dataSnapshot.child("Profil").child("profilPic").getValue(String.class);
                     Glide.with(getApplicationContext()).load(mUrlSave)
                             .apply(RequestOptions.circleCropTransform()).into(profile);
+                } else {
+                    Glide.with(getApplicationContext()).load(R.drawable.logo_user2).apply(RequestOptions.centerCropTransform()).into(profile);
                 }
 
             }
@@ -88,9 +90,9 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab1));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab2));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.name_tab3));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.current_request));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.old_requests));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.wild_news));
         tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
@@ -131,7 +133,7 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(MenuActivity.this, ChatActivity.class);
-                            intent.putExtra("pseudo", pseudo);
+                            intent.putExtra(PSEUDO, pseudo);
                             startActivity(intent);
                         }
                     });
@@ -152,5 +154,8 @@ public class MenuActivity extends AppCompatActivity implements RequestFragment.O
     public void onFragmentInteraction(Uri uri) {
     }
 
+    @Override
+    public void onBackPressed() {
 
+    }
 }

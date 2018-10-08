@@ -170,7 +170,7 @@ public class WildersActivity extends AppCompatActivity {
                 googlePlay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String url = "https://play.google.com/store/apps/developer?id=Wild+Code+School";
+                        String url = getString(R.string.url_playstore);
                         Intent i = new Intent(Intent.ACTION_VIEW);
                         i.setData(Uri.parse(url));
                         startActivity(i);

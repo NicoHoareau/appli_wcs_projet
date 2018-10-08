@@ -1,83 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_marginBottom="32dp"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
+    android:gravity="center"
     tools:context="fr.nicolashoareau_toulousewcs.appliwcsprojet.activity.CreateRequestActivity">
-
-    <TextView
-        android:id="@+id/tv_indic_name_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/indication_name_request"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="24dp" />
-
-    <TextView
-        android:id="@+id/tv_code_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_indic_name_request"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Code requête"
-        android:layout_marginLeft="32dp" />
 
     <TextView
         android:id="@+id/tv_date_request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
         android:text="@string/date"
         android:textColor="@android:color/black"
         android:textSize="16sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_indic_name_request"
-        android:layout_marginLeft="24dp" />
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/et_description"
-        android:layout_width="265dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="@string/my_request"
-        android:inputType="text"
+        android:inputType="textCapSentences"
         android:lines="3"
         android:maxLines="3"
         android:selectAllOnFocus="false"
         android:singleLine="false"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_date_request"
-        android:layout_marginLeft="28dp" />
+        android:textColor="@android:color/black" />
 
     <Button
         android:id="@+id/btn_validate_request"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="casual"
+        android:background="@color/wcsOrange"
         android:text="@string/validate"
-        android:textColor="@color/wcsOrange"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_description" />
+        android:textColor="#fff"
+        android:layout_gravity="center"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

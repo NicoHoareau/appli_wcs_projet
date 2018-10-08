@@ -43,8 +43,6 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_fragment_request, parent, false);
         }
-        final TextView tvIdRequest =  convertView.findViewById(R.id.tv_id_request);
-        tvIdRequest.setText(requestModel.getIdRequest());
 
         TextView tvDate = convertView.findViewById(R.id.tv_dateRequest);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -71,7 +69,6 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                 builder.setView(view);
                 final AlertDialog dialog = builder.create();
 
-                final TextView tvIdRequest = view.findViewById(R.id.tv_id_request_dialog);
                 final TextView tvDateRq = view.findViewById(R.id.tv_date_dialog);
                 final TextView tvDescRq = view.findViewById(R.id.tv_desc_dialog);
 
@@ -79,8 +76,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot rqSnap : dataSnapshot.getChildren()) {
-                            String idRq = requestModel.getIdRequest();
-                            tvIdRequest.setText(idRq);
+
                             final String descRq = requestModel.getDescription();
                             tvDescRq.setText(descRq);
                             Date today = Calendar.getInstance().getTime();
@@ -93,7 +89,7 @@ public class RequestAdapter extends ArrayAdapter<RequestModel> {
                             editRq.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    tvDescRq.setVisibility(View.INVISIBLE);
+                                    tvDescRq.setVisibility(View.GONE);
                                     etEditDesc.setVisibility(View.VISIBLE);
                                     etEditDesc.setText(descRq);
                                     editRq.setImageResource(R.drawable.accept);

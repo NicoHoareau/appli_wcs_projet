@@ -20,7 +20,7 @@ import fr.nicolashoareau_toulousewcs.appliwcsprojet.R;
  * Created by perrine on 15/04/18.
  */
 
-public class OubliePasswordActivity extends AppCompatActivity {
+public class ForgotPasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,26 +28,26 @@ public class OubliePasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_oublie_password);
 
         final EditText inputEmail = findViewById(R.id.et_email_oublie);
-        Button nouveauMdp = findViewById(R.id.btn_nouveau_mdp);
-        Button retour = findViewById(R.id.btn_retour);
+        Button newPass = findViewById(R.id.btn_nouveau_mdp);
+        Button back = findViewById(R.id.btn_retour);
         final FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        retour.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OubliePasswordActivity.this, ConnexionActivity.class);
+                Intent intent = new Intent(ForgotPasswordActivity.this, ConnectionActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-        nouveauMdp.setOnClickListener(new View.OnClickListener() {
+        newPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = inputEmail.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(OubliePasswordActivity.this, R.string.entrer_email, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ForgotPasswordActivity.this, R.string.entrer_email, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -56,9 +56,9 @@ public class OubliePasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(OubliePasswordActivity.this, R.string.mdp_envoye, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ForgotPasswordActivity.this, R.string.pass_send, Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(OubliePasswordActivity.this, R.string.email_inconnu, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ForgotPasswordActivity.this, R.string.unknown_email, Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

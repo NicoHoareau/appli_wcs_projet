@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:layout_margin="8dp"
     android:id="@+id/item_chat_received"
-    android:paddingBottom="4dp">
+    android:paddingBottom="4dp"
+    android:paddingRight="24dp">
 
     <TextView
         android:id="@+id/tv_name"

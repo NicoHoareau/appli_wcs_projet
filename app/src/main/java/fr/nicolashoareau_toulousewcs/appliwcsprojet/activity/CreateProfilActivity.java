@@ -35,15 +35,9 @@ public class CreateProfilActivity extends AppCompatActivity {
 
     private EditText mEditPseudo;
     private ImageView mImgProfilPic;
-    private RadioButton mJava;
-    private RadioButton mJs;
-    private String mLanguage;
-    private String mLink;
-    private RadioButton mFevrier;
-    private RadioButton mSeptembre;
-    private EditText mEditAnnee;
-    private String mPromo;
-    private String mUrlSave;
+    private RadioButton mJava, mJs, mFebruary, mSeptember;
+    private String mLanguage, mLink, mPromo, mUrlSave;
+    private EditText mEditYear;
     private Uri mUri = null;
     private DatabaseReference mDatabaseReference;
     private FirebaseDatabase mDatabase;
@@ -63,9 +57,9 @@ public class CreateProfilActivity extends AppCompatActivity {
         mEditPseudo = findViewById(R.id.et_enter_pseudo);
         mJava = findViewById(R.id.radiobutton_java);
         mJs = findViewById(R.id.radiobutton_js);
-        mFevrier = findViewById(R.id.radiobutton_fev);
-        mSeptembre = findViewById(R.id.radiobutton_sept);
-        mEditAnnee = findViewById(R.id.et_year);
+        mFebruary = findViewById(R.id.radiobutton_fev);
+        mSeptember = findViewById(R.id.radiobutton_sept);
+        mEditYear = findViewById(R.id.et_year);
         mDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         mStorageReference = FirebaseStorage.getInstance().getReference();
@@ -122,15 +116,15 @@ public class CreateProfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String firstName = mEditPseudo.getText().toString();
-                String year = mEditAnnee.getText().toString();
+                String year = mEditYear.getText().toString();
                 if (firstName.isEmpty()) {
-                    Toast.makeText(CreateProfilActivity.this, "Entrez un pseudo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateProfilActivity.this, R.string.enter_pseudo, Toast.LENGTH_SHORT).show();
                 } else if (!mJs.isChecked() && !mJava.isChecked()) {
-                    Toast.makeText(CreateProfilActivity.this, "Cochez un langage", Toast.LENGTH_SHORT).show();
-                } else if (!mFevrier.isChecked() && !mSeptembre.isChecked()) {
-                    Toast.makeText(CreateProfilActivity.this, "Cochez une promotion", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateProfilActivity.this, R.string.choose_language, Toast.LENGTH_SHORT).show();
+                } else if (!mFebruary.isChecked() && !mSeptember.isChecked()) {
+                    Toast.makeText(CreateProfilActivity.this, R.string.choose_promo, Toast.LENGTH_SHORT).show();
                 } else if (year.isEmpty()) {
-                    Toast.makeText(CreateProfilActivity.this, "Entrez une année de promotion", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateProfilActivity.this, R.string.promo_year, Toast.LENGTH_SHORT).show();
                 } else {
                     saveUserModel();
 
@@ -152,18 +146,18 @@ public class CreateProfilActivity extends AppCompatActivity {
                 String profilPic = mLink;
                 if (mJava.isChecked()) {
                     mJs.setChecked(false);
-                    mLanguage = "Java";
+                    mLanguage = getString(R.string.java);
                 } else if (mJs.isChecked()) {
                     mJava.setChecked(false);
-                    mLanguage = "Javascript";
+                    mLanguage = getString(R.string.javascript);
                 }
-                String annee = mEditAnnee.getText().toString();
-                if (mFevrier.isChecked()) {
-                    mSeptembre.setChecked(false);
-                    mPromo = "Février " + annee;
-                } else if (mSeptembre.isChecked()) {
-                    mFevrier.setChecked(false);
-                    mPromo = "Septembre " + annee;
+                String annee = mEditYear.getText().toString();
+                if (mFebruary.isChecked()) {
+                    mSeptember.setChecked(false);
+                    mPromo = getString(R.string.february) + annee;
+                } else if (mSeptember.isChecked()) {
+                    mFebruary.setChecked(false);
+                    mPromo = getString(R.string.september) + annee;
                 }
                 UserModel userModel = new UserModel(pseudo, profilPic, mLanguage, mPromo);
                 FirebaseUser user = mAuth.getCurrentUser();
@@ -173,18 +167,18 @@ public class CreateProfilActivity extends AppCompatActivity {
                 String profilPic = mUrlSave;
                 if (mJava.isChecked()) {
                     mJs.setChecked(false);
-                    mLanguage = "Java";
+                    mLanguage = getString(R.string.java);
                 } else if (mJs.isChecked()) {
                     mJava.setChecked(false);
-                    mLanguage = "Javascript";
+                    mLanguage = getString(R.string.javascript);
                 }
-                String annee = mEditAnnee.getText().toString();
-                if (mFevrier.isChecked()) {
-                    mSeptembre.setChecked(false);
-                    mPromo = "Février " + annee;
-                } else if (mSeptembre.isChecked()) {
-                    mFevrier.setChecked(false);
-                    mPromo = "Septembre " + annee;
+                String annee = mEditYear.getText().toString();
+                if (mFebruary.isChecked()) {
+                    mSeptember.setChecked(false);
+                    mPromo = getString(R.string.february) + annee;
+                } else if (mSeptember.isChecked()) {
+                    mFebruary.setChecked(false);
+                    mPromo = getString(R.string.september) + annee;
                 }
                 UserModel userModel = new UserModel(pseudo, profilPic, mLanguage, mPromo);
                 FirebaseUser user = mAuth.getCurrentUser();
@@ -200,18 +194,18 @@ public class CreateProfilActivity extends AppCompatActivity {
                     String profilPic = downloadUrl.toString();
                     if (mJava.isChecked()) {
                         mJs.setChecked(false);
-                        mLanguage = "Java";
+                        mLanguage = getString(R.string.java);
                     } else if (mJs.isChecked()) {
                         mJava.setChecked(false);
-                        mLanguage = "Javascript";
+                        mLanguage = getString(R.string.javascript);
                     }
-                    String annee = mEditAnnee.getText().toString();
-                    if (mFevrier.isChecked()) {
-                        mSeptembre.setChecked(false);
-                        mPromo = "Février " + annee;
-                    } else if (mSeptembre.isChecked()) {
-                        mFevrier.setChecked(false);
-                        mPromo = "Septembre " + annee;
+                    String annee = mEditYear.getText().toString();
+                    if (mFebruary.isChecked()) {
+                        mSeptember.setChecked(false);
+                        mPromo = getString(R.string.february) + annee;
+                    } else if (mSeptember.isChecked()) {
+                        mFebruary.setChecked(false);
+                        mPromo = getString(R.string.september) + annee;
                     }
                     UserModel userModel = new UserModel(pseudo, profilPic, mLanguage, mPromo);
                     FirebaseUser user = mAuth.getCurrentUser();

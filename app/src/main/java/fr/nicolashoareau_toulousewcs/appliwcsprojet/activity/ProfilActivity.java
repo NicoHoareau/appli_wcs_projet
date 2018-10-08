@@ -55,16 +55,13 @@ public class ProfilActivity extends AppCompatActivity {
     public final static int GALLERY_MODIF_PHOTO = 798;
     public final static int APP_PHOTO = 456;
     public final static int APP_MODIF_PHOTO = 333;
-    FirebaseDatabase mDatabase;
-    DatabaseReference mProfileRef;
-    private String mUid;
-    private DatabaseReference mPathID;
-    private DatabaseReference mPostID;
+
+    private FirebaseDatabase mDatabase;
+    private String mUid, mCurrentPhotoPath, mKeyPostModif;
+    private DatabaseReference mPathID, mPostID, mProfileRef;
     private Uri mFileUri = null;
     private String mGetImageUrl = "";
     private ImageView mProfilPix;
-    private String mCurrentPhotoPath;
-    private String mKeyPostModif;
     private FirebaseAuth mAuth;
 
     @Override
@@ -91,6 +88,10 @@ public class ProfilActivity extends AppCompatActivity {
                 mProfilPix = findViewById(R.id.iv_profilPic);
                 Glide.with(getApplicationContext()).load(urlSave)
                         .apply(RequestOptions.circleCropTransform()).into(mProfilPix);
+
+                if (urlSave == null || urlSave.isEmpty()) {
+                    Glide.with(getApplicationContext()).load(R.drawable.logo_user2).apply(RequestOptions.centerCropTransform()).into(mProfilPix);
+                }
 
                 String pseudo = dataSnapshot.child("Profil").child("pseudo").getValue(String.class);
                 TextView tvPseudo = findViewById(R.id.tv_pseudo);
@@ -138,23 +139,19 @@ public class ProfilActivity extends AppCompatActivity {
                             mKeyPostModif = listActualitySnapshot.getKey();
                             final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ProfilActivity.this);
 
-                            // set title
-                            alertDialogBuilder.setTitle("test");
-
                             // set dialog message
                             alertDialogBuilder
-                                    .setMessage("supp")
                                     .setCancelable(true)
-                                    .setPositiveButton("Supprimer", new DialogInterface.OnClickListener() {
+                                    .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             DatabaseReference databaseReference = mProfileRef.child(mKeyPostModif);
                                             databaseReference.removeValue();
                                             dialog.cancel();
-                                            Toast.makeText(ProfilActivity.this, "Post supprimée", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(ProfilActivity.this, R.string.post_delete, Toast.LENGTH_SHORT).show();
 
                                         }
                                     })
-                                    .setNegativeButton("modifier", new DialogInterface.OnClickListener() {
+                                    .setNegativeButton(R.string.edit_post, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
 
                                             AlertDialog.Builder builder = new AlertDialog.Builder(ProfilActivity.this);
@@ -165,7 +162,7 @@ public class ProfilActivity extends AppCompatActivity {
                                             //contains modif post
                                             final ImageView ivPost = view.findViewById(R.id.iv_modify_photo);
                                             final EditText etPost = view.findViewById(R.id.et_modify_desc);
-                                            TextView tvdate = view.findViewById(R.id.tv_modif_date);
+                                            TextView tvdate = view.findViewById(R.id.tv_date);
                                             Button btSendModif = view.findViewById(R.id.btn_send_modif);
 
                                             String oldImageUrl = actualityModel.getUrlPhoto();
@@ -190,7 +187,6 @@ public class ProfilActivity extends AppCompatActivity {
                                                     final ActualityModel actualityModel2 = dataSnapshot.getValue(ActualityModel.class);
                                                     String newImageUrl = actualityModel2.getUrlPhoto();
                                                     Glide.with(getApplicationContext()).load(newImageUrl).into(ivPost);
-
                                                 }
 
                                                 @Override
@@ -253,7 +249,7 @@ public class ProfilActivity extends AppCompatActivity {
                 return true;
             case R.id.disconnect:
                 mAuth.signOut();
-                Intent intent = new Intent(ProfilActivity.this, ConnexionActivity.class);
+                Intent intent = new Intent(ProfilActivity.this, ConnectionActivity.class);
                 startActivity(intent);
                 return true;
         }
@@ -265,12 +261,13 @@ public class ProfilActivity extends AppCompatActivity {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
+        lp.setMargins(16, 0, 16, 0);
         input.setLayoutParams(lp);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfilActivity.this);
-        builder.setTitle(R.string.edit_my_name)
+        builder.setTitle(R.string.edit_pseudo)
                 .setView(input)
-                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                .setNeutralButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (input.getText() != null) {
@@ -305,7 +302,7 @@ public class ProfilActivity extends AppCompatActivity {
 
     private void editPix() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfilActivity.this);
-        builder.setTitle(R.string.edit_my_pix)
+        builder.setTitle(R.string.edit_pix)
                 .setMessage(R.string.select_source)
                 .setPositiveButton(R.string.app_photo, new DialogInterface.OnClickListener() {
                     @Override
@@ -341,7 +338,7 @@ public class ProfilActivity extends AppCompatActivity {
 
     private void modifImagePost() {
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfilActivity.this);
-        builder.setTitle(R.string.edit_my_pix)
+        builder.setTitle(R.string.edit_pix)
                 .setMessage(R.string.select_source)
                 .setPositiveButton(R.string.app_photo, new DialogInterface.OnClickListener() {
                     @Override

@@ -8,14 +8,14 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_modif_date"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="32dp"
-        android:text="@string/textview"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:layout_gravity="center"/>
+        tools:text="date du jour" />
 
     <ImageView
         android:id="@+id/iv_modify_photo"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:background="@color/wcsOrange"
-        android:text="@string/valid"
+        android:text="@string/validate"
         android:textColor="#fff"
         android:layout_gravity="center"/>
 

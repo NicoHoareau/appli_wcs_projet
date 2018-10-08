@@ -42,7 +42,6 @@ public class CreatePostActivity extends AppCompatActivity {
 
     public final static int GALLERY = 123;
     public final static int APP_PHOTO = 456;
-    private static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 101;
     FirebaseDatabase mDatabase;
     DatabaseReference mCreatePostRef;
     private String mUid;
@@ -65,13 +64,13 @@ public class CreatePostActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(CreatePostActivity.this);
                 builder.setTitle(R.string.add_new_pic)
-                        .setPositiveButton("camera", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getResources().getString(R.string.camera), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dispatchTakePictureIntent();
                             }
                         })
-                        .setNegativeButton("Gallery", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getResources().getString(R.string.gallery), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 startActivityForResult(new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI), GALLERY);
@@ -83,9 +82,9 @@ public class CreatePostActivity extends AppCompatActivity {
 
         final EditText etDescriptionPost = findViewById(R.id.et_modify_desc);
 
-        TextView dateText = findViewById(R.id.tv_modif_date);
+        TextView dateText = findViewById(R.id.tv_date);
         final Date currentTime = Calendar.getInstance().getTime();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         final String date = formatter.format(currentTime);
         dateText.setText(date);
         final long dateLong = currentTime.getTime();
@@ -96,7 +95,7 @@ public class CreatePostActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String textDescriptionPost = etDescriptionPost.getText().toString();
                 if (textDescriptionPost.isEmpty()) {
-                    Toast.makeText(CreatePostActivity.this, R.string.advert_description, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreatePostActivity.this, R.string.enter_description, Toast.LENGTH_SHORT).show();
                 } else {
                     mCreatePostRef = mDatabase.getReference("Post");
                     mCreatePostRef.addListenerForSingleValueEvent(new ValueEventListener() {

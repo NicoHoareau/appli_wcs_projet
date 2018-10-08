@@ -20,7 +20,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         ivClearWindows.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SplashScreenActivity.this, ConnexionActivity.class);
+                Intent i = new Intent(SplashScreenActivity.this, ConnectionActivity.class);
                 startActivity(i);
             }
         });
@@ -29,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         splashScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SplashScreenActivity.this, ConnexionActivity.class));
+                startActivity(new Intent(SplashScreenActivity.this, ConnectionActivity.class));
             }
         });
     }

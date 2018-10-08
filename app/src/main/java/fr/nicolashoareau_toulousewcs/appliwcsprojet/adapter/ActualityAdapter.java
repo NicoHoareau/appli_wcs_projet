@@ -39,7 +39,7 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
         final TextView tvUsernameUser = convertView.findViewById(R.id.tv_username_user);
         ImageView ivAddPhoto = convertView.findViewById(R.id.iv_photo_added);
         TextView tvDescription = convertView.findViewById(R.id.tv_description_actuality);
-        TextView tvDatePost = convertView.findViewById(R.id.tv_modif_date);
+        TextView tvDatePost = convertView.findViewById(R.id.tv_date);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dateformat = sdf.format(actualityModel.getDatePost());
@@ -52,6 +52,9 @@ public class ActualityAdapter extends ArrayAdapter<ActualityModel> {
         tvUsernameUser.setText(actualityModel.getPseudoUser());
 
         Glide.with(parent.getContext()).load(actualityModel.getUrlPhotoUser()).apply(RequestOptions.circleCropTransform()).into(ivUserPhoto);
+        if (actualityModel.getUrlPhotoUser() == null || actualityModel.getUrlPhotoUser().isEmpty()) {
+            Glide.with(getContext()).load(R.drawable.logo_user2).apply(RequestOptions.centerCropTransform()).into(ivUserPhoto);
+        }
 
 
         return convertView;
