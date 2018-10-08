@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CreateProfilActivity" android:background="#FFF">
+
+    <ImageView
+        android:id="@+id/iv_profil_pic"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cerf_nb" />
+
+    <LinearLayout
+        android:id="@+id/choice_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profil_pic">
+
+        <ImageView
+            android:id="@+id/btn_camera"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="32dp"
+            app:srcCompat="@drawable/app_photo"
+            android:layout_marginEnd="32dp" />
+
+        <ImageView
+            android:id="@+id/btn_gallery"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:srcCompat="@drawable/album_photo" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_enter_pseudo"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/enter_pseudo"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choice_pic" />
+
+    <RadioGroup
+        android:id="@+id/langage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_enter_pseudo">
+
+        <RadioButton
+            android:id="@+id/radiobutton_java"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:duplicateParentState="false"
+            android:text="@string/java_android"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_enter_pseudo"
+            android:layout_marginEnd="16dp" />
+
+        <RadioButton
+            android:id="@+id/radiobutton_js"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/js_react"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_enter_pseudo" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/promo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/langage">
+
+        <TextView
+            android:id="@+id/tv_promotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/promotion"
+            android:layout_marginRight="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/langage"
+            android:layout_marginEnd="8dp" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_vertical">
+
+            <RadioButton
+                android:id="@+id/radiobutton_fev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/february"
+                android:layout_marginRight="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/langage"
+                android:layout_marginEnd="8dp" />
+
+            <RadioButton
+                android:id="@+id/radiobutton_sept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/september"
+                app:layout_constraintStart_toEndOf="@+id/radiobutton_fev"
+                app:layout_constraintTop_toBottomOf="@+id/langage" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/et_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:hint="@string/year"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/langage"
+            android:layout_marginStart="16dp" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_valid_modif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/wcsGreen"
+        android:text="@string/validate"
+        android:textColor="#fff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/promo" />
+
+</android.support.constraint.ConstraintLayout>

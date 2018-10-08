@@ -1,3 +1,82 @@
 <resources>
-    <string name="app_name">Appli WCS Projet</string>
+    <string name="app_name">Wilders in Wild Code School</string>
+    <string name="forgot_pass">Mot de passe oublié ?</string>
+    <string name="password">Mot de passe</string>
+    <string name="log_in">Connexion</string>
+    <string name="sign_in">Inscription</string>
+    <string name="email">Email</string>
+    <string name="already_registered">Déjà inscrit ?</string>
+    <string name="entrer_email">Veuillez entrer une adresse email</string>
+    <string name="entrer_password">Veuillez entrer un mot de passe</string>
+    <string name="password_too_short">Le mot de passe doit contenir au moins 6 caractères</string>
+    <string name="failure_registration">Echec de l\'inscription</string>
+    <string name="new_pass_send">Envoi d\'un nouveau mot de passe</string>
+    <string name="back">Retour</string>
+    <string name="pass_send">Mot de passe envoyé</string>
+    <string name="unknown_email">Email inconnu</string>
+    <string name="current_request">Requêtes en cours</string>
+    <string name="old_requests">Anciennes requêtes</string>
+    <string name="wild_news">Wild News</string>
+    <string name="request">Requête</string>
+    <string name="validate">Valider</string>
+    <string name="unkown_user">Utilisateur inconnu</string>
+    <string name="select_source">Sélectionner une source pour changer la photo</string>
+    <string name="app_photo">Appareil photo</string>
+    <string name="galery">Galerie</string>
+    <string name="wild_club">Wild Club</string>
+    <string name="enter_msg">Entrer un message</string>
+    <string name="wild_chat">Wild Chat</string>
+    <string name="description">Description</string>
+    <string name="check_post">Valider ce post</string>
+    <string name="date">Date</string>
+    <string name="pseudo">Pseudo</string>
+    <string name="splash_text">Application mobile pour la Wild Code School !</string>
+    <string name="edit_request">Modifier la requête</string>
+    <string name="check_modif">Valider la modification</string>
+    <string name="validate_request">Valider la requête</string>
+    <string name="text_playstore">Vos amis wilders sont aussi géniaux que vous, n\'hésitez pas à aller voir leurs créations sur le Google Play Store de la Wild Code School.</string>
+    <string name="close">Fermer</string>
+    <string name="edit_pseudo">Modifier mon pseudo</string>
+    <string name="edit_pix">Modifer ma photo</string>
+    <string name="log_out">Déconnexion</string>
+    <string name="wild_store">Wild Store</string>
+    <string name="enter_description">Veuillez entrer une description s\'il vous plaît !</string>
+    <string name="no_image">Aucune image n\'a été sélectionnée</string>
+    <string-array name="spinnerLanguage">
+        <item>Sélectionner un language :</item>
+        <item>Java</item>
+        <item>Javascript</item>
+    </string-array>
+    <string name="enter_pseudo">Entrer un pseudo</string>
+    <string name="java_android">Java/Android/JEE</string>
+    <string name="js_react">JavaScript/React</string>
+    <string name="promotion">Promotion :</string>
+    <string name="year">Année</string>
+    <string name="splash_text1">Créer, modifier et valider des requêtes</string>
+    <string name="splash_text2">Suivez le fil d\'actualité de la Wild Code School avec Wild News !</string>
+    <string name="splash_text3">Personnaliser votre profil et visionner celui de vos amis wilders dans le Wild Club</string>
+    <string name="splash_text4">Discuter avec tous les wilders via le Wild Chat :D</string>
+    <string name="add_new_pic">Ajouter une photo</string>
+    <string name="my_request">Ma requête</string>
+    <string name="camera">Caméra</string>
+    <string name="gallery">Gallerie</string>
+    <string name="choose_language">Choisir un langage</string>
+    <string name="choose_promo">Choisir une promotion</string>
+    <string name="promo_year">Entrer une année de promotion</string>
+    <string name="java">Java</string>
+    <string name="javascript">Javascript</string>
+    <string name="february">Février</string>
+    <string name="september">Septembre</string>
+    <string name="add_request">Merci d\'ajouter une requête</string>
+    <string name="num">123456789</string>
+    <string name="letters">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="req">REQ</string>
+    <string name="delete_post">Supprimer mon post ?</string>
+    <string name="yes">Oui</string>
+    <string name="post_delete">Post supprimé</string>
+    <string name="delete">Supprimer mon post</string>
+    <string name="edit_post">Modifier mon post</string>
+    <string name="ok">OK</string>
+    <string name="url_playstore">https://play.google.com/store/apps/developer?id=Wild+Code+School</string>
+
 </resources>

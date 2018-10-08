@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CreatePostActivity" android:background="#FFF"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        tools:text="date du jour" />
+
+    <ImageView
+        android:id="@+id/iv_modify_photo"
+        android:layout_width="247dp"
+        android:layout_height="237dp"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/cerf_nb" />
+
+    <EditText
+        android:id="@+id/et_modify_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/description"
+        android:inputType="text|textCapSentences" />
+
+    <Button
+        android:id="@+id/btn_validate_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/wcsOrange"
+        android:text="@string/validate"
+        android:textColor="#fff"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
