@@ -7,6 +7,8 @@ android {
             keyPassword 'Yrq3W5DMBKcj6m3H'
             storeFile file('keystore.jks')
             storePassword 'WbW7g4NTfZdEa2Jt'
+            v2SigningEnabled false
+
         }
     }
     compileSdkVersion 26

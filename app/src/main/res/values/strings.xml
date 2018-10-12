@@ -65,8 +65,8 @@
     <string name="promo_year">Entrer une année de promotion</string>
     <string name="java">Java</string>
     <string name="javascript">Javascript</string>
-    <string name="february">Février</string>
-    <string name="september">Septembre</string>
+    <string name="february">Février </string>
+    <string name="september">Septembre </string>
     <string name="add_request">Merci d\'ajouter une requête</string>
     <string name="num">123456789</string>
     <string name="letters">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
